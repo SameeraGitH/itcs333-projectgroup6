@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events Calendar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="dana.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md py-4 px-6 sticky top-0 z-10">
+    <h1 class="text-3xl font-bold text-blue-600">📅 Events Calendar</h1>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+    <!-- Search & Sorting -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+      <!-- Search -->
+      <input type="text" placeholder="🔍 Search events..." class="w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+      <!-- Sort -->
+      <select class="w-full md:w-1/4 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option>Sort by Date</option>
+        <option>Sort by Name</option>
+      </select>
+    </div>
+
+    <!-- Events Grid -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Example Event Card -->
+      <article class="custom-card">
+        <h2 class="text-xl font-semibold text-blue-700">Tech Workshop</h2>
+        <p class="text-gray-500 text-sm mt-1">📅 May 5, 2025</p>
+        <p class="mt-4 text-gray-700">An interactive workshop on the latest web technologies and tools for developers.</p>
+      </article>
+
+      <!-- Add more cards here as needed -->
+    </section>
+
+    <!-- Pagination -->
+    <div class="flex justify-center mt-10 space-x-2">
+      <button class="pagination-btn">1</button>
+      <button class="pagination-btn">2</button>
+      <button class="pagination-btn">Next →</button>
+    </div>
+
+    <!-- Add New Event -->
+    <div class="mt-12 text-right">
+      <a href="create-event.html" class="add-btn">+ Add New Event</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-gray-500 mt-16 mb-4">
+    © 2025 Campus Hub. All rights reserved.
+  </footer>
+
+</body>
+</html>
