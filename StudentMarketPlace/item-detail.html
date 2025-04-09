@@ -1,41 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Item Details - Marketplace</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Item Detail</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <div class="container py-5">
-    <a href="marketplace.html" class="btn btn-link mb-3">&larr; Back to Listings</a>
-    <div class="row">
-      <div class="col-md-6">
-        <img src="https://via.placeholder.com/500" class="img-fluid" alt="Item Image">
-      </div>
-      <div class="col-md-6">
-        <h2>Used Textbook</h2>
-        <p class="text-muted">$20 · Like New</p>
-        <p>Excellent condition, used for one semester only.</p>
-        <p><strong>Category:</strong> Books</p>
-        <p><strong>Contact:</strong> student@example.com</p>
-        <div class="mt-3">
-          <button class="btn btn-warning">Edit</button>
-          <button class="btn btn-danger">Delete</button>
-        </div>
-      </div>
-    </div>
+<body class="bg-gray-50 text-gray-800 font-sans">
 
-    <!-- Comments Section (UI Only) -->
-    <div class="mt-5">
-      <h4>Comments</h4>
-      <div class="mb-3">
-        <textarea class="form-control" rows="3" placeholder="Add a comment..."></textarea>
-        <button class="btn btn-primary mt-2">Post Comment</button>
+  <header class="bg-white shadow-md py-4 px-6 sticky top-0 z-10">
+    <h1 class="text-3xl font-bold text-blue-600">📄 Item Detail</h1>
+  </header>
+
+  <main class="container">
+    <article class="custom-card">
+      <h2 class="text-2xl font-semibold text-blue-700">Used Textbook</h2>
+      <p class="text-sm text-gray-500 mt-1">Category: Books | Price: $10</p>
+      <p class="mt-4 text-gray-700">This textbook is in great condition with minimal highlighting.</p>
+
+      <div class="mt-6 space-x-2">
+        <button class="add-btn">Edit</button>
+        <button class="delete-btn">Delete</button>
+        <a href="marketplace.html" class="secondary-btn">Back to Marketplace</a>
       </div>
-      <div class="border p-3 rounded mb-2">
-        <strong>Ali:</strong> Is this still available?
+
+      <div class="mt-8">
+        <h3 class="text-lg font-semibold mb-2">Comments</h3>
+        <textarea placeholder="Write a comment..." class="w-full mb-2"></textarea>
+        <button class="add-btn">Post Comment</button>
       </div>
-    </div>
-  </div>
+    </article>
+  </main>
+
 </body>
 </html>
