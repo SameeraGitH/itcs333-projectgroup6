@@ -1,63 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Events Calendar</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="dana.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Calendar</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-100">
+    <header class="bg-blue-800 text-white p-6">
+        <h1 class="text-3xl font-semibold text-center">📅Event Calendar</h1>
+        <nav class="text-center mt-4">
+            
+            <a href="#" class="text-white mx-4">Course Reviews</a>
+            <a href="#" class="text-white mx-4">Course Notes</a>
+            <a href="#" class="text-white mx-4">Events Calendar</a>
+            <a href="#" class="text-white mx-4">Campus News</a>
+            <a href="#" class="text-white mx-4">Club Activities</a>
+            <a href="#" class="text-white mx-4">Student Marketplace</a>
+        </nav>
+    </header>
 
-  <!-- Header -->
-  <header class="bg-white shadow-md py-4 px-6 sticky top-0 z-10">
-    <h1 class="text-3xl font-bold text-blue-600">📅 Events Calendar</h1>
-  </header>
+    <main class="p-6">
+        <section class="filters flex justify-between mb-6">
+            
+            <input type="text" placeholder="Search for an event..." class="px-4 py-2 border rounded-md w-1/4">
+            <select class="px-4 py-2 border rounded-md w-1/4">
+                <option value="all">All Events</option>
+                <option value="upcoming">Upcoming</option>
+                <option value="past">Past</option>
+            </select>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-md">Search</button>
+        </section>
 
-  <!-- Main Content -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <section class="event-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <div class="event-item bg-white p-4 border rounded-md shadow-sm">
+                <h2 class="text-xl font-semibold text-blue-600">🔐 Campus Hack 2025</h2>
+                <p>Event Date: 01/05/2025</p>
+                <p class="text-gray-600">Welcome to Campus Hack 2025, the first-ever university-wide hackathon I'm organizing to bring together the brightest student minds in tech! 🎉💻.</p>
+            </div>
+            
+            <div class="event-item bg-white p-4 border rounded-md shadow-sm">
+                <h2 class="text-xl font-semibold text-blue-600">🚀 space Workshop </h2>
+                <p>Event Date: 05/05/2025</p>
+                <p class="text-gray-600">Space Workshop is an interactive learning event focused on topics related to astronomy, space exploration, and astrophysics. It’s designed to educate and engage participants in understanding the universe</p>
+            </div>
+            <div class="event-item bg-white p-4 border rounded-md shadow-sm">
+                <h2 class="text-xl font-semibold text-blue-600"> 💡 Tech Fusion 2025 </h2>
+                <p>Event Date: 10/05/2025</p>
+                <p class="text-gray-600">Tech Fusion 2025 is a one-day event designed to bring students, tech enthusiasts, and industry professionals together to explore the latest innovations in IT and emerging technologies</p>
+            </div>
+        </section>
 
-    <!-- Search & Sorting -->
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-      <!-- Search -->
-      <input type="text" placeholder="🔍 Search events..." class="w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <section class="pagination text-center mt-8">
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-md mx-2">Previous</button>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-md mx-2">Next</button>
+        </section>
+    </main>
 
-      <!-- Sort -->
-      <select class="w-full md:w-1/4 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <option>Sort by Date</option>
-        <option>Sort by Name</option>
-      </select>
-    </div>
-
-    <!-- Events Grid -->
-    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Example Event Card -->
-      <article class="custom-card">
-        <h2 class="text-xl font-semibold text-blue-700">Tech Workshop</h2>
-        <p class="text-gray-500 text-sm mt-1">📅 May 5, 2025</p>
-        <p class="mt-4 text-gray-700">An interactive workshop on the latest web technologies and tools for developers.</p>
-      </article>
-
-      <!-- Add more cards here as needed -->
-    </section>
-
-    <!-- Pagination -->
-    <div class="flex justify-center mt-10 space-x-2">
-      <button class="pagination-btn">1</button>
-      <button class="pagination-btn">2</button>
-      <button class="pagination-btn">Next →</button>
-    </div>
-
-    <!-- Add New Event -->
-    <div class="mt-12 text-right">
-      <a href="create-event.html" class="add-btn">+ Add New Event</a>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="text-center text-sm text-gray-500 mt-16 mb-4">
-    © 2025 Campus Hub. All rights reserved.
-  </footer>
-
+    <footer class="bg-blue-800 text-white text-center p-4 mt-8">
+        <p>&copy; 2025 Campus Hub University</p>
+    </footer>
 </body>
 </html>
