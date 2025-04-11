@@ -1,0 +1,200 @@
+:root {
+    --color-primary-dark: #1a3b6e;      /* Dark blue - for header/footer */
+    --color-background-light: #f4f7fb;  /* Light background */
+    --color-white: #ffffff;             /* White - for cards/text */
+    --color-highlight: #f1c40f;         /* Yellow - for highlights */
+    --color-button-blue: #3498db;       /* Button and links */
+    --color-button-blue-hover: #2980b9; /* Button hover */
+    --color-text: #2c3e50;              /* Text color */
+  }
+  
+  body {
+    background-color: var(--color-background-light);
+    color: var(--color-text);
+    padding-top: 56px;
+  }
+  
+  .navbar {
+    background-color: var(--color-primary-dark) !important;
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+  
+  /* REVIEW CARD DESIGN */
+  .review-card {
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--color-white);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    position: relative;
+  }
+  
+  .review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .review-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--color-button-blue);
+  }
+  
+  .review-card .card-body {
+    padding: 1.5rem;
+  }
+  
+  .review-card .card-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary-dark);
+    font-weight: 600;
+  }
+  
+  .review-card .professor {
+    color: var(--color-button-blue);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  .review-card .card-text {
+    color: var(--color-text);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  
+  .review-card .review-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: 1rem;
+  }
+  
+  .review-card .review-date {
+    font-size: 0.8rem;
+    color: var(--color-button-blue);
+  }
+  
+  .review-card .review-actions .btn {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.85rem;
+    border-radius: 20px;
+  }
+  
+  .rating-stars {
+    color: var(--color-highlight);
+    font-size: 1.1rem;
+    margin-left: 0.5rem;
+  }
+  
+  /* FORM ELEMENTS */
+  .form-control, .form-select {
+    border-color: var(--color-button-blue);
+  }
+  
+  /* DROPDOWN STYLES */
+  .dropdown-menu {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-button-blue);
+  }
+  
+  .dropdown-item:hover {
+    background-color: var(--color-button-blue);
+    color: var(--color-white);
+  }
+  
+  /* BUTTON STYLES */
+  .btn-primary {
+    background-color: var(--color-button-blue);
+    border-color: var(--color-button-blue);
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--color-button-blue-hover);
+    border-color: var(--color-button-blue-hover);
+    color: var(--color-white);
+  }
+  
+  .btn-outline-secondary {
+    border-color: var(--color-button-blue);
+    color: var(--color-text);
+  }
+  
+  .btn-outline-secondary:hover {
+    background-color: var(--color-button-blue);
+    color: var(--color-white);
+  }
+  
+  .btn-outline-success {
+    border-color: var(--color-button-blue);
+    color: var(--color-button-blue);
+  }
+  
+  .btn-outline-success:hover {
+    background-color: var(--color-button-blue);
+    color: var(--color-white);
+  }
+  
+  .btn-outline-primary {
+    border-color: var(--color-primary-dark);
+    color: var(--color-primary-dark);
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+  }
+  
+  /* MODAL STYLES */
+  .modal-header {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+  }
+  
+  /* FOOTER */
+  footer {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+  }
+  
+  /* NAVIGATION */
+  .nav-item a:hover {
+    color: var(--color-highlight) !important;
+  }
+  
+  /* PAGINATION */
+  .pagination .page-item .page-link {
+    color: var(--color-button-blue);
+    border: 1px solid var(--color-button-blue);
+  }
+  
+  .pagination .page-item.active .page-link,
+  .pagination .page-item .page-link:hover {
+    background-color: var(--color-button-blue);
+    color: var(--color-white);
+    border-color: var(--color-button-blue);
+  }
+  
+  /* RESPONSIVE ADJUSTMENTS */
+  @media (max-width: 768px) {
+    .navbar-brand {
+      font-size: 1.25rem;
+    }
+    
+    .d-flex.flex-wrap.gap-2 > * {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+  }
