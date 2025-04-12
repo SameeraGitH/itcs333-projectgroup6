@@ -4,42 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activity Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="form-page">
-    <form action="index.html">
+<body class="bg-blue-100 min-h-screen flex items-center justify-center p-4">
+    <form action="index.html" class="bg-white shadow-xl rounded-lg p-8 w-full max-w-lg">
         
-        <div class="activity-title">
-            <legend><h2>Submit a new club activity</h2></legend>
-            <br>
+        <div class="mb-4">
+            
             <label for="activityTitle">Activity Name</label>
             <input type="text" name="activityTitle" id="activityTitle" placeholder="abc" required>
           
         </div>
             
         <br>
-        <div class="club-name">
+        <div class="mb-4">
             <label for="clubName">Club Name</label>
             <input type="text" required>
         </div>
         <br>
-        <div class="date-time">
+        <div class="mb-4">
             <label for="date&time">Date & Time</label>
             <input type="text" required>
         </div>
         <br>
-        <div class="descr">
+        <div class="mb-4">
             <label for="shortdescr">Description</label>
             <input type="text" name="shortdescr" id="shortdescr" required>
         </div>
         <br>
-        <div class="form-button-container">
-            <input type="reset">
+        <div class="form-button-container flex justify-between gap-3flex justify-between gap-3">
+            <input type="reset" value="Reset"  class="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 cursor-pointer w-full"/>
         
-        
-            <input type="submit">
-        
-            <button>Go back</button>
+            <input type="submit" value="Submit" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 cursor-pointer w-full"
+            />
+            <button type="button" onclick="window.location.href='index.html' "class="bg-gray-600 text-white px-4 py-2 rounded-full hover:bg-gray-700 cursor-pointer w-full">
+            Go Back
+            </button>   
+    
         </div>
 
 
