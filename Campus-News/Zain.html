@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus News | Campus Hub</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3a5a78',
+                        'primary-light': '#eef5fc',
+                        secondary: '#f8b400',
+                        accent: '#e63946',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a class="text-primary font-bold text-xl" href="#">Campus Hub</a>
+                <button class="lg:hidden focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                
+<div id="navbarNav">
+    <ul class="flex flex-wrap gap-4 mt-4 lg:mt-0 lg:flex-row lg:space-x-6">
+        <li class="nav-item"><a class="nav-link text-gray-600 hover:text-primary" href="#Home">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-gray-600 hover:text-primary" href="#events">Events</a></li>
+        <li class="nav-item"><a class="nav-link text-gray-600 hover:text-primary" href="#reviews">Reviews</a></li> 
+        <li class="nav-item"><a class="nav-link text-gray-600 hover:text-primary" href="#Notes">Notes</a></li>
+        <li class="nav-item"><a class="nav-link text-primary font-medium" href="#News">News</a></li> 
+        <li class="nav-item"><a class="nav-link text-gray-600 hover:text-primary" href="#Activities">Activities</a></li>
+        <li class="nav-item"><a class="nav-link text-gray-600 hover:text-primary" href="#marketplace">Marketplace</a></li>
+
+    </ul>
+</div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Listing Page -->
+    <header class="bg-gradient-to-r from-primary to-blue-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl font-bold mb-2">Campus News</h1>
+            <p class="text-lg opacity-90">Stay updated with the latest happenings around campus</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Search and Filter Section -->
+        <section class="mb-6">
+            <div class="bg-white rounded-lg shadow-sm p-4">
+                <div class="flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4">
+                    <div class="flex-grow">
+                        <div class="flex">
+                            <input type="text" class="w-full rounded-l-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Search news...">
+                            <button class="bg-primary text-white px-4 py-2 rounded-r-lg hover:bg-blue-800 transition">Search</button>
+                        </div>
+                    </div>
+                    <div>
+                        <select class="w-full md:w-auto rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary">
+                            <option selected>All Categories</option>
+                            <option>Academic</option>
+                            <option>Sports</option>
+                            <option>Events</option>
+                            <option>Campus Life</option>
+                            <option>Announcements</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sorting Controls -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+            <div class="flex items-center gap-2">
+                <span class="text-gray-600">Sort by: </span>
+                <div class="inline-flex rounded-md shadow-sm">
+                    <button type="button" class="px-4 py-2 text-sm font-medium bg-primary text-white rounded-l-lg">Newest</button>
+                    <button type="button" class="px-4 py-2 text-sm font-medium bg-white text-gray-700 border-t border-b border-r border-gray-300 hover:bg-gray-50">Most Popular</button>
+                    <button type="button" class="px-4 py-2 text-sm font-medium bg-white text-gray-700 border-t border-b border-r border-gray-300 rounded-r-lg hover:bg-gray-50">Featured</button>
+                </div>
+            </div>
+            <a href="#item-creation-form" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition flex items-center gap-2">
+                <i class="bi bi-plus-circle"></i> Add News
+            </a>
+        </div>
+
+        <!-- News Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <!-- News Card 1 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <img src="/api/placeholder/800/450" class="h-48 w-full object-cover" alt="New Science Building">
+                <div class="p-5 flex flex-col h-64">
+                    <div class="flex gap-2 mb-3">
+                        <span class="px-2 py-1 bg-secondary text-xs font-semibold rounded-full">Featured</span>
+                        <span class="px-2 py-1 bg-primary-light text-primary text-xs font-semibold rounded-full">Academic</span>
+                    </div>
+                    <h5 class="text-xl font-bold mb-2">New Science Building Opens Next Week</h5>
+                    <p class="text-gray-600 overflow-hidden text-ellipsis whitespace-nowrap">The state-of-the-art science facility will host its grand opening ceremony on Monday...</p>
+                    <div class="text-gray-500 text-sm flex justify-between mt-3">
+                        <span>March 25, 2025</span>
+                        <span>By Admin</span>
+                    </div>
+                    <a href="#item-detail-view" class="mt-auto bg-white text-primary border border-primary rounded-lg px-4 py-2 text-center hover:bg-primary hover:text-white transition">Read More</a>
+                </div>
+            </div>
+            
+            <!-- News Card 2 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <img src="/api/placeholder/800/450" class="h-48 w-full object-cover" alt="Basketball Championship">
+                <div class="p-5 flex flex-col h-64">
+                    <div class="flex gap-2 mb-3">
+                        <span class="px-2 py-1 bg-primary-light text-primary text-xs font-semibold rounded-full">Sports</span>
+                    </div>
+                    <h5 class="text-xl font-bold mb-2">Basketball Team Advances to Finals</h5>
+                    <p class="text-gray-600 overflow-hidden text-ellipsis whitespace-nowrap">Our university basketball team has secured a spot in the national championship finals...</p>
+                    <div class="text-gray-500 text-sm flex justify-between mt-3">
+                        <span>March 23, 2025</span>
+                        <span>By Sports Dept</span>
+                    </div>
+                    <a href="#" class="mt-auto bg-white text-primary border border-primary rounded-lg px-4 py-2 text-center hover:bg-primary hover:text-white transition">Read More</a>
+                </div>
+            </div>
+            
+            <!-- News Card 3 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <img src="/api/placeholder/800/450" class="h-48 w-full object-cover" alt="Spring Festival">
+                <div class="p-5 flex flex-col h-64">
+                    <div class="flex gap-2 mb-3">
+                        <span class="px-2 py-1 bg-primary-light text-primary text-xs font-semibold rounded-full">Events</span>
+                    </div>
+                    <h5 class="text-xl font-bold mb-2">Annual Spring Festival Schedule Announced</h5>
+                    <p class="text-gray-600 overflow-hidden text-ellipsis whitespace-nowrap">The schedule for this year's Spring Festival has been released, featuring live music, food vendors, and...</p>
+                    <div class="text-gray-500 text-sm flex justify-between mt-3">
+                        <span>March 20, 2025</span>
+                        <span>By Events Committee</span>
+                    </div>
+                    <a href="#" class="mt-auto bg-white text-primary border border-primary rounded-lg px-4 py-2 text-center hover:bg-primary hover:text-white transition">Read More</a>
+                </div>
+            </div>
+            
+            <!-- News Card 4 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <img src="/api/placeholder/800/450" class="h-48 w-full object-cover" alt="Library Hours">
+                <div class="p-5 flex flex-col h-64">
+                    <div class="flex gap-2 mb-3">
+                        <span class="px-2 py-1 bg-accent text-white text-xs font-semibold rounded-full">Urgent</span>
+                        <span class="px-2 py-1 bg-primary-light text-primary text-xs font-semibold rounded-full">Announcements</span>
+                    </div>
+                    <h5 class="text-xl font-bold mb-2">Extended Library Hours During Finals Week</h5>
+                    <p class="text-gray-600 overflow-hidden text-ellipsis whitespace-nowrap">The main library will be open 24 hours during finals week to accommodate student study needs...</p>
+                    <div class="text-gray-500 text-sm flex justify-between mt-3">
+                        <span>March 18, 2025</span>
+                        <span>By Library Staff</span>
+                    </div>
+                    <a href="#" class="mt-auto bg-white text-primary border border-primary rounded-lg px-4 py-2 text-center hover:bg-primary hover:text-white transition">Read More</a>
+                </div>
+            </div>
+            
+            <!-- News Card 5 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <img src="/api/placeholder/800/450" class="h-48 w-full object-cover" alt="Guest Lecture">
+                <div class="p-5 flex flex-col h-64">
+                    <div class="flex gap-2 mb-3">
+                        <span class="px-2 py-1 bg-primary-light text-primary text-xs font-semibold rounded-full">Academic</span>
+                    </div>
+                    <h5 class="text-xl font-bold mb-2">Nobel Laureate to Give Guest Lecture</h5>
+                    <p class="text-gray-600 overflow-hidden text-ellipsis whitespace-nowrap">Dr. Jane Reynolds, winner of the 2024 Nobel Prize in Physics, will be giving a special lecture...</p>
+                    <div class="text-gray-500 text-sm flex justify-between mt-3">
+                        <span>March 15, 2025</span>
+                        <span>By Physics Department</span>
+                    </div>
+                    <a href="#" class="mt-auto bg-white text-primary border border-primary rounded-lg px-4 py-2 text-center hover:bg-primary hover:text-white transition">Read More</a>
+                </div>
+            </div>
+            
+            <!-- News Card 6 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                <img src="/api/placeholder/800/450" class="h-48 w-full object-cover" alt="Campus Renovation">
+                <div class="p-5 flex flex-col h-64">
+                    <div class="flex gap-2 mb-3">
+                        <span class="px-2 py-1 bg-primary-light text-primary text-xs font-semibold rounded-full">Campus Life</span>
+                    </div>
+                    <h5 class="text-xl font-bold mb-2">Main Quad Renovation Project Update</h5>
+                    <p class="text-gray-600 overflow-hidden text-ellipsis whitespace-nowrap">The renovation of the main quad is ahead of schedule and is expected to be completed by...</p>
+                    <div class="text-gray-500 text-sm flex justify-between mt-3">
+                        <span>March 12, 2025</span>
+                        <span>By Facilities Management</span>
+                    </div>
+                    <a href="#" class="mt-auto bg-white text-primary border border-primary rounded-lg px-4 py-2 text-center hover:bg-primary hover:text-white transition">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="flex justify-center mt-8 mb-12">
+            <nav class="flex items-center">
+                <a href="#" class="px-4 py-2 mx-1 text-gray-500 bg-white rounded-lg border border-gray-300 opacity-50 cursor-not-allowed">
+                    Previous
+                </a>
+                <a href="#" class="px-4 py-2 mx-1 text-white bg-primary rounded-lg border border-primary">1</a>
+                <a href="#" class="px-4 py-2 mx-1 text-gray-700 bg-white rounded-lg border border-gray-300 hover:bg-gray-100">2</a>
+                <a href="#" class="px-4 py-2 mx-1 text-gray-700 bg-white rounded-lg border border-gray-300 hover:bg-gray-100">3</a>
+                <a href="#" class="px-4 py-2 mx-1 text-gray-700 bg-white rounded-lg border border-gray-300 hover:bg-gray-100">
+                    Next
+                </a>
+            </nav>
+        </div>
+        
+        <!-- Item Detail View -->
+        <section id="item-detail-view" class="mt-12 mb-12">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="/api/placeholder/1200/400" class="w-full h-64 object-cover" alt="New Science Building">
+                    <div class="p-6">
+                        <div class="border-b border-gray-200 pb-4 mb-6">
+                            <h2 class="text-3xl font-bold mb-4">New Science Building Opens Next Week</h2>
+                            <div class="flex flex-wrap items-center gap-3 mb-4">
+                                <span class="px-3 py-1 bg-secondary text-sm font-semibold rounded-full">Featured</span>
+                                <span class="px-3 py-1 bg-primary-light text-primary text-sm font-semibold rounded-full">Academic</span>
+                                <span class="text-gray-500">March 25, 2025</span>
+                                <div class="flex items-center">
+                                    <img src="/api/placeholder/100/100" alt="Admin" class="w-8 h-8 rounded-full mr-2">
+                                    <span>Admin</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="prose max-w-none">
+                            <p>The University is proud to announce the grand opening of our new state-of-the-art Science Building. After three years of construction and a $45 million investment, the facility will officially open its doors on Monday, April 7, 2025.</p>
+                            
+                            <p>The 120,000 square foot building features:</p>
+                            <ul class="list-disc pl-5 my-4">
+                                <li>24 advanced research laboratories</li>
+                                <li>6 teaching laboratories</li>
+                                <li>A 200-seat lecture hall with the latest audio-visual technology</li>
+                                <li>Study spaces designed to promote collaboration</li>
+                                <li>Energy-efficient systems that make it a LEED Platinum certified building</li>
+                            </ul>
+                            
+                            <p>"This facility represents our commitment to advancing scientific research and providing our students with the best possible learning environment," said University President Dr. Alicia Chen. "The building will serve as a hub for innovation and discovery for generations to come."</p>
+                            
+                            <img src="/api/placeholder/800/400" class="my-6 rounded-lg w-full" alt="Inside new science building">
+                            
+                            <p>The grand opening ceremony will take place at 10 AM on Monday and will feature remarks from President Chen, the Dean of Sciences, and state officials who helped fund the project. Tours of the building will be available throughout the day.</p>
+                            
+                            <p>All students and faculty are invited to attend. The event will also be livestreamed on the university website for those unable to attend in person.</p>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-3 mt-8">
+                            <a href="#" class="px-4 py-2 text-primary border border-primary rounded-lg hover:bg-primary hover:text-white transition flex items-center gap-2">
+                                <i class="bi bi-arrow-left"></i> Back to News
+                            </a>
+                            <a href="#" class="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-100 transition flex items-center gap-2">
+                                <i class="bi bi-pencil"></i> Edit
+                            </a>
+                            <button class="px-4 py-2 text-accent border border-accent rounded-lg hover:bg-accent hover:text-white transition flex items-center gap-2">
+                                <i class="bi bi-trash"></i> Delete
+                            </button>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <h4 class="text-xl font-bold mb-6">Comments (3)</h4>
+                            
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <div class="flex justify-between items-start mb-3">
+                                    <div class="flex items-center">
+                                        <img src="/api/placeholder/50/50" alt="Sarah Johnson" class="w-10 h-10 rounded-full mr-3">
+                                        <strong>Sarah Johnson</strong>
+                                    </div>
+                                    <small class="text-gray-500">March 26, 2025 at 10:14 AM</small>
+                                </div>
+                                <p class="text-gray-700">This is such exciting news! I can't wait to have my biology lab in the new building next semester. Will there be an open house for students before classes start there?</p>
+                            </div>
+                            
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <div class="flex justify-between items-start mb-3">
+                                    <div class="flex items-center">
+                                        <img src="/api/placeholder/50/50" alt="Professor Martinez" class="w-10 h-10 rounded-full mr-3">
+                                        <strong>Professor Martinez</strong>
+                                    </div>
+                                    <small class="text-gray-500">March 26, 2025 at 2:30 PM</small>
+                                </div>
+                                <p class="text-gray-700">As a faculty member in the Chemistry department, I've had the privilege of touring the building already. The research facilities are truly world-class. This will transform our research capabilities.</p>
+                            </div>
+                            
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                                <div class="flex justify-between items-start mb-3">
+                                    <div class="flex items-center">
+                                        <img src="/api/placeholder/50/50" alt="Admin" class="w-10 h-10 rounded-full mr-3">
+                                        <strong>Admin</strong>
+                                    </div>
+                                    <small class="text-gray-500">March 27, 2025 at 9:00 AM</small>
+                                </div>
+                                <p class="text-gray-700">@Sarah - Yes! There will be student-specific tours the entire week before classes start in the new building. A schedule will be posted next week.</p>
+                            </div>
+                            
+                            <form class="mt-8">
+                                <div class="mb-4">
+                                    <label for="commentText" class="block text-gray-700 font-medium mb-2">Add a comment</label>
+                                    <textarea class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" id="commentText" rows="3" placeholder="Share your thoughts..."></textarea>
+                                </div>
+                                <button type="submit" class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-blue-800 transition">Post Comment</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Item Creation Form -->
+        <section id="item-creation-form" class="mt-12">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-primary text-white p-4">
+                        <h3 class="text-xl font-bold">Post Campus News</h3>
+                    </div>
+                    <div class="p-6">
+                        <form>
+                            <div class="mb-6">
+                                <label for="newsTitle" class="block text-gray-700 font-medium mb-2">News Title <span class="text-accent">*</span></label>
+                                <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" id="newsTitle" placeholder="Enter a descriptive title" required>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="newsCategory" class="block text-gray-700 font-medium mb-2">Category <span class="text-accent">*</span></label>
+                                    <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" id="newsCategory" required>
+                                        <option value="" selected disabled>Select category</option>
+                                        <option value="academic">Academic</option>
+                                        <option value="sports">Sports</option>
+                                        <option value="events">Events</option>
+                                        <option value="campus-life">Campus Life</option>
+                                        <option value="announcements">Announcements</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="newsDate" class="block text-gray-700 font-medium mb-2">Publication Date <span class="text-accent">*</span></label>
+                                    <input type="date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" id="newsDate" required>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="newsImage" class="block text-gray-700 font-medium mb-2">Featured Image</label>
+                                <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" type="file" id="newsImage">
+                                <div class="text-gray-500 text-sm mt-1">Recommended size: 800x450 pixels</div>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="newsSummary" class="block text-gray-700 font-medium mb-2">Summary <span class="text-accent">*</span></label>
+                                <textarea class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" id="newsSummary" rows="2" placeholder="Brief summary of the news (appears in listings)" required></textarea>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="newsContent" class="block text-gray-700 font-medium mb-2">Content <span class="text-accent">*</span></label>
+                                <textarea class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" id="newsContent" rows="8" placeholder="Full news article content..." required></textarea>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <div class="flex items-center mb-3">
+                                    <input type="checkbox" id="featuredNews" class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary">
+                                    <label for="featuredNews" class="ml-2 text-gray-700">
+                                        Mark as featured news
+                                    </label>
+                                </div>
+                                
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="urgentNews" class="w-4 h-4 text-accent border-gray-300 rounded focus:ring-accent">
+                                    <label for="urgentNews" class="ml-2 text-gray-700">
+                                        Mark as urgent
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between">
+                                <a href="#" class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 transition">Cancel</a>
+                                <button type="submit" class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-blue-800 transition">Publish News</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h5 class="text-lg font-bold mb-4">Campus Hub</h5>
+                    <p class="text-gray-300">Your one-stop platform for campus resources and information.</p>
+                </div>
+                <div>
+                    <h5 class="text-lg font-bold mb-4">Quick Links</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Campus News</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Events</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-bold mb-4">Contact</h5>
+                    <address>
+                        <p class="mb-1 text-gray-300">1234 University Ave.</p>
+                        <p class="mb-1 text-gray-300">College Town, ST 12345</p>
+                        <p class="mb-1 text-gray-300">Email: info@campushub.edu</p>
+                    </address>
+                </div>
+            </div>
+            <hr class="my-6 border-gray-700">
+            <div class="text-center">
+                <p class="text-gray-400">&copy; 2025 Campus Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
