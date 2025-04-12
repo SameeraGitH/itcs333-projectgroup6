@@ -33,3 +33,18 @@ header h1 {
     margin-right: 0%;
     margin-bottom: 5px;
 }
+
+.nav-link:hover{
+    color:rgb(140, 177, 228);
+}
+
+.nav-link:visited{
+    color:cadetblue;
+}
+
+nav{
+    
+    height: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
