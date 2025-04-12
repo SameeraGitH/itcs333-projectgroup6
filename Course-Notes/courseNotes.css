@@ -26,3 +26,10 @@ header h1 {
     padding-bottom: 5px;
 
 }
+
+.nav-link{
+    color:#022b5d;
+    text-decoration: none;
+    margin-right: 0%;
+    margin-bottom: 5px;
+}
