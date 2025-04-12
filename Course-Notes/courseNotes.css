@@ -110,3 +110,16 @@ h1, h2, h3, h4 {
 .pagination-controls {
     margin: 15px 0;
 }
+
+.notes-list {
+    margin-top: 1px;
+    margin: 10px 0;
+}
+
+.note-item {
+    background-color: rgb(207, 221, 240);
+    padding: 15px;
+    border-radius: 5px;
+    margin: 10px 0;
+    border: 1px solid #022b5d;
+}
