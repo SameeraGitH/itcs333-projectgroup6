@@ -16,3 +16,13 @@ header h1 {
     height: 70px;
     margin-top: 10px;
 }
+
+.flex{
+    background-color: #eff0f1;
+    border: none;
+    height: 10px;
+    text-align: right;
+    padding-right: 0%;
+    padding-bottom: 5px;
+
+}
