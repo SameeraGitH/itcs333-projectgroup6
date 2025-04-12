@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campus News | Campus Hub</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -24,42 +24,46 @@
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans">
     <!-- Navigation -->
-    <nav class="bg-white shadow-md">
-        <div class="container mx-auto px-4 py-3">
-            <div class="flex justify-between items-center">
-                <a class="text-primary font-bold text-xl" href="#">Campus Hub</a>
-                <button class="lg:hidden focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    
+
+
+<nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+            <a class="text-primary font-bold text-xl" href="#">Campus Hub</a>
+            <div class="flex items-center lg:hidden">
+                <input id="menu-toggle" type="checkbox" class="hidden peer" />
+                <label for="menu-toggle" class="cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
-                </button>
-                
-<div id="navbarNav">
-    <ul class="flex flex-wrap gap-4 mt-4 lg:mt-0 lg:flex-row lg:space-x-6">
-        <li class="nav-item"><a class="nav-link text-gray-600 hover:text-primary" href="#Home">Home</a></li>
-        <li class="nav-item"><a class="nav-link text-gray-600 hover:text-primary" href="#events">Events</a></li>
-        <li class="nav-item"><a class="nav-link text-gray-600 hover:text-primary" href="#reviews">Reviews</a></li> 
-        <li class="nav-item"><a class="nav-link text-gray-600 hover:text-primary" href="#Notes">Notes</a></li>
-        <li class="nav-item"><a class="nav-link text-primary font-medium" href="#News">News</a></li> 
-        <li class="nav-item"><a class="nav-link text-gray-600 hover:text-primary" href="#Activities">Activities</a></li>
-        <li class="nav-item"><a class="nav-link text-gray-600 hover:text-primary" href="#marketplace">Marketplace</a></li>
-
-    </ul>
-</div>
-
+                </label>
             </div>
         </div>
-    </nav>
+        <ul class="flex-col gap-4 mt-4 lg:mt-0 lg:flex lg:flex-row lg:space-x-6 lg:justify-end lg:items-center peer-checked:flex hidden">
+            <li><a class="text-gray-600 hover:text-primary" href="#Home">Home</a></li>
+            <li><a class="text-gray-600 hover:text-primary" href="#events">Events</a></li>
+            <li><a class="text-gray-600 hover:text-primary" href="#reviews">Course Reviews</a></li> 
+            <li><a class="text-gray-600 hover:text-primary" href="#Notes">Course Notes</a></li>
+            <li><a class="text-primary font-medium" href="#News">Campus News</a></li> 
+            <li><a class="text-gray-600 hover:text-primary" href="#Activities">Club Activities</a></li>
+            <li><a class="text-gray-600 hover:text-primary" href="#marketplace">Student Marketplace</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+
 
     <!-- Main Listing Page -->
     <header class="bg-gradient-to-r from-primary to-blue-900 text-white py-8">
-        <div class="container mx-auto px-4">
+        <div class="max-w-7xl mx-auto mx-auto px-4">
             <h1 class="text-3xl font-bold mb-2">Campus News</h1>
             <p class="text-lg opacity-90">Stay updated with the latest happenings around campus</p>
         </div>
     </header>
 
-    <main class="container mx-auto px-4 py-8">
+    <main class="max-w-7xl mx-auto mx-auto px-4 py-8">
         <!-- Search and Filter Section -->
         <section class="mb-6">
             <div class="bg-white rounded-lg shadow-sm p-4">
@@ -398,7 +402,7 @@
     </main>
     
     <footer class="bg-gray-800 text-white py-8 mt-12">
-        <div class="container mx-auto px-4">
+        <div class="max-w-7xl mx-auto mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <h5 class="text-lg font-bold mb-4">Campus Hub</h5>
