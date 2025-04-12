@@ -123,3 +123,11 @@ h1, h2, h3, h4 {
     margin: 10px 0;
     border: 1px solid #022b5d;
 }
+
+.add-button {
+    background-color: #358648;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
