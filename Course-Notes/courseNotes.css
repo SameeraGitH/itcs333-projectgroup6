@@ -78,3 +78,11 @@ nav ul li a {
 li a:hover{
     color: whitesmoke;
 }
+main {
+    padding: 50px;
+    
+}
+
+h1, h2, h3, h4 {
+    color: black;
+}
