@@ -160,3 +160,7 @@ button {
 .required {
     color: red;
 }
+
+footer {
+    text-align : center;
+}
