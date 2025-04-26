@@ -15,37 +15,106 @@
   </header>
 
   <!-- Main -->
-  <main class="container">
-    <form>
-      <label for="title">Item Title</label>
-      <input type="text" id="title" placeholder="e.g. Physics Book" required />
+  <main class="container mx-auto p-6">
+    <form id="addItemForm" class="bg-white p-6 rounded shadow-md space-y-4">
+      <div>
+        <label for="title">Item Title</label>
+        <input type="text" id="title" placeholder="e.g. Physics Book" required class="input-field" />
+      </div>
 
-      <label for="category">Category</label>
-      <select id="category" required>
-        <option value="">Select a category</option>
-        <option>Books</option>
-        <option>Electronics</option>
-        <option>Clothing</option>
-      </select>
+      <div>
+        <label for="category">Category</label>
+        <select id="category" required class="input-field">
+          <option value="">Select a category</option>
+          <option>Books</option>
+          <option>Electronics</option>
+          <option>Clothing</option>
+        </select>
+      </div>
 
-      <label for="price">Price (USD)</label>
-      <input type="number" id="price" placeholder="e.g. 20" required />
+      <div>
+        <label for="price">Price (USD)</label>
+        <input type="number" id="price" placeholder="e.g. 20" required class="input-field" />
+      </div>
 
-      <label for="description">Description</label>
-      <textarea id="description" placeholder="Write a short description..." required></textarea>
+      <div>
+        <label for="description">Description</label>
+        <textarea id="description" placeholder="Write a short description..." required class="input-field"></textarea>
+      </div>
 
-      <label for="contact">Contact Info</label>
-      <input type="email" id="contact" placeholder="you@example.com" required />
+      <div>
+        <label for="contact">Contact Info</label>
+        <input type="email" id="contact" placeholder="you@example.com" required class="input-field" />
+      </div>
 
-      <label for="image">Image (optional)</label>
-      <input type="file" id="image" />
+      <div>
+        <label for="image">Image (optional)</label>
+        <input type="file" id="image" class="input-field" />
+      </div>
 
       <div class="flex flex-wrap gap-4 mt-4">
-        <button type="submit" class="add-btn">Submit</button>
-        <a href="marketplace.html" class="secondary-btn">Cancel</a>
+        <button type="submit" class="add-btn bg-blue-500 text-white px-4 py-2 rounded">Submit</button>
+        <a href="marketplace.html" class="secondary-btn text-blue-500">Cancel</a>
       </div>
+
+      <!-- Error Message Display -->
+      <div id="error-message" class="text-red-500 mt-2 hidden"></div>
     </form>
   </main>
+
+  <!-- JavaScript for form validation -->
+  <script>
+    const form = document.getElementById('addItemForm');
+    const errorMessage = document.getElementById('error-message');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // stop the page from refreshing
+
+      // Gather form values
+      const title = document.getElementById('title').value.trim();
+      const category = document.getElementById('category').value;
+      const price = document.getElementById('price').value.trim();
+      const description = document.getElementById('description').value.trim();
+      const contact = document.getElementById('contact').value.trim();
+
+      // Simple form validation
+      if (title.length < 3) {
+        showError('Title must be at least 3 characters long.');
+        return;
+      }
+      if (category === "") {
+        showError('Please select a category.');
+        return;
+      }
+      if (price === "" || isNaN(price) || Number(price) <= 0) {
+        showError('Please enter a valid price.');
+        return;
+      }
+      if (description.length < 10) {
+        showError('Description must be at least 10 characters.');
+        return;
+      }
+      if (!validateEmail(contact)) {
+        showError('Please enter a valid email address.');
+        return;
+      }
+
+      // If all good, hide error and show success
+      errorMessage.classList.add('hidden');
+      alert('Item successfully added! (You can later connect it to an API)');
+      form.reset();
+    });
+
+    function showError(message) {
+      errorMessage.textContent = message;
+      errorMessage.classList.remove('hidden');
+    }
+
+    function validateEmail(email) {
+      const re = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      return re.test(email.toLowerCase());
+    }
+  </script>
 
 </body>
 </html>
