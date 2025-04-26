@@ -45,3 +45,12 @@ function renderNotes() {
         notesList.appendChild(noteItem);
     });
 }
+
+function applyFilters(notes) {
+    const searchTerm = searchInput.value.toLowerCase();
+    const sortedNotes = notes.sort((a, b) => {
+        const field = sortSelect.value;
+        return a[field].localeCompare(b[field]);
+    });
+    return sortedNotes.filter(note => note.title.toLowerCase().includes(searchTerm));
+}
