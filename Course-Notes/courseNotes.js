@@ -76,3 +76,14 @@ nextButton.addEventListener('click', () => {
         renderNotes();
     }
 });
+
+function viewDetail(noteId) {
+    const note = notes.find(n => n.id === noteId);
+    if (note) {
+        document.getElementById('details').innerHTML = `
+            <h3>${note.title}</h3>
+            <p>${note.body}</p>
+            <button onclick="window.history.back();">Back to Listing</button>
+        `;
+    }
+}
