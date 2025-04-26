@@ -1,0 +1,31 @@
+[
+    {
+      "id": 1,
+      "title": "Photography Workshop",
+      "club": "Media Club",
+      "dateTime": "April 6, 2025 @ 3:00 PM",
+      "description": "Special guests from abroad will be present at the club to teach how to level up from amateur to pro level photography, and also to give exclusive hands-on tips and tricks!"
+    },
+    {
+      "id": 2,
+      "title": "Drama Night",
+      "club": "Theater Club",
+      "dateTime": "April 10, 2025 @ 6:00 PM",
+      "description": "Showcase your acting/musical skills and you can also come just for entertainment!!"
+    },
+    {
+      "id": 3,
+      "title": "Debate Day",
+      "club": "Debating Society",
+      "dateTime": "April 9, 2025 @ 4:00 PM",
+      "description": "Learn from language and communication experts how imporve your debating skills. Get a chance to be a part of many debates that are to come."
+    },
+    {
+      "id": 4,
+      "title": "Campus Clean Up Green Up",
+      "club": "Community Wellness Club",
+      "dateTime": "April 9, 2025 @ 4:00 PM",
+      "description": "A positive contribution to the community and the ecological well-being of the campus.It’s a great community initiative, offering a diverse student body to come together and do some good."
+    }
+  ]
+  

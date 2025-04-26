@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-gray-100 font-sans text-gray-800 p-4" >
+    <div id="activityDetails" class="p-8 bg-white rounded shadow-md"></div>
+
     <div class="activity-details bg-white p-6 rounded-2xl shadow-md max-w-3xl mx-auto my-8" id="photography-workshop">
         <h2 class="text-2xl font-bold mb-4">Photography Workshop</h2>
         <p><strong>By Club: </strong>Media Club</p>
@@ -44,5 +46,47 @@
     <div class="flex justify-center mt-10">
      <a href="index.html" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-full transition duration-200">Back to Activities</a>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const id = window.location.hash.substring(1); 
+            
+            if (!id) {
+                document.getElementById('activityDetails').innerHTML = "<p class='text-red-500'>No activity found.</p>";
+                return;
+            }
+            
+            try {
+                // here im loading activities from localStorage
+                let savedActivities = JSON.parse(localStorage.getItem('activities')) || [];
+        
+                // here loading activities from activities.json
+                const response = await fetch('activities.json');
+                const jsonActivities = await response.json();
+        
+                // Combine both here
+                const allActivities = [...savedActivities, ...jsonActivities];
+        
+                const activity = allActivities.find(a => String(a.id) === id);
+        
+                if (activity) {
+                    document.getElementById('activityDetails').innerHTML = `
+                        <div class="bg-white p-8 rounded-lg shadow-lg">
+                            <h2 class="text-2xl font-bold mb-4">${activity.title}</h2>
+                            <p class="mb-2"><strong>Club:</strong> ${activity.club}</p>
+                            <p class="mb-2"><strong>Date & Time:</strong> ${activity.dateTime}</p>
+                            <p class="mt-4">${activity.description}</p>
+                        </div>
+                    `;
+                } else {
+                    document.getElementById('activityDetails').innerHTML = "<p class='text-red-500'>Activity not found.</p>";
+                }
+            } catch (error) {
+                console.error("Error loading activity:", error);
+                document.getElementById('activityDetails').innerHTML = "<p class='text-red-500'>Failed to load activity details.</p>";
+            }
+        });
+    </script>
+        
+        
 </body>
 </html>

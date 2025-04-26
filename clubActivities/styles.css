@@ -193,3 +193,8 @@ button:hover {
     justify-content: center;
     margin-bottom: 40px;
 }
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }

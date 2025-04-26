@@ -1,94 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Campus Hub - Club Activities</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
-</head>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Campus Hub - Club Activities</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <link rel="stylesheet" href="styles.css">
+  </head>
 
-<body class="bg-gray-100 font-sans">
-
-
-  <nav class="bg-white border-b border-gray-200 shadow-md px-4 py-2">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-      
-      
-      <div class="text-xl font-bold text-blue-800 ">
-        Campus Hub
-      </div>
-  
-      
-      <ul class="flex-col gap-4 lg:flex lg:flex-row lg:space-x-6 lg:justify-end lg:items-center hidden lg:flex">
-        <li><a class="text-gray-600 hover:text-blue-600" href="#Home">Home</a></li>
-        <li><a class="text-gray-600 hover:text-blue-600" href="#events">Events</a></li>
-        <li><a class="text-gray-600 hover:text-blue-600" href="#reviews">Course Reviews</a></li>
-        <li><a class="text-gray-600 hover:text-blue-600" href="#Notes">Course Notes</a></li>
-        <li><a class="text-gray-600 hover:text-blue-600" href="#News">Campus News</a></li>
-        <li><a class="text-blue-600 font-semibold" href="#Activities">Club Activities</a></li>
-        <li><a class="text-gray-600 hover:text-blue-600" href="#marketplace">Student Marketplace</a></li>
-      </ul>
-    </div>
-  </nav>
-  
-    <div class="w-full max-w-7xl mx-auto px-4 mt-6">
-        <form action="" class="flex items-center gap-2 max-w-sm">
-            <input type="text" placeholder="Search club activities"
-              class="w-full px-3 py-1.5 border border-gray-300 rounded-md shadow-sm text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-md shadow-md transition duration-200">
-                <img src="Images/search.png" alt="Search" class="w-4 h-4" />
-            </button>
-        </form>
+  <body class="bg-gray-100 font-sans">
 
 
-    </div>
-    <div class="text-box">
-        <h1 class="text-4xl font-bold text-center text-gray-800">Club Activities</h1>
+    <nav class="bg-white border-b border-gray-200 shadow-md px-4 py-2">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
         
+        
+        <div class="text-xl font-bold text-blue-800 ">
+          Campus Hub
+        </div>
+    
+        
+        <ul class="flex-col gap-4 lg:flex lg:flex-row lg:space-x-6 lg:justify-end lg:items-center hidden lg:flex">
+          <li><a class="text-gray-600 hover:text-blue-600" href="#Home">Home</a></li>
+          <li><a class="text-gray-600 hover:text-blue-600" href="#events">Events</a></li>
+          <li><a class="text-gray-600 hover:text-blue-600" href="#reviews">Course Reviews</a></li>
+          <li><a class="text-gray-600 hover:text-blue-600" href="#Notes">Course Notes</a></li>
+          <li><a class="text-gray-600 hover:text-blue-600" href="#News">Campus News</a></li>
+          <li><a class="text-blue-600 font-semibold" href="#Activities">Club Activities</a></li>
+          <li><a class="text-gray-600 hover:text-blue-600" href="#marketplace">Student Marketplace</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <div class="w-full max-w-7xl mx-auto px-4 mt-2"> 
+      <div class="flex flex-col gap-2 max-w-sm"> 
+      <div class="flex items-center gap-2">
+          
+              <input type="text" id="searchInput"placeholder="Search club activities"
+                class="w-full px-3 py-1.5 border border-gray-300 rounded-md shadow-sm text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button type="button" class="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-md shadow-md transition duration-200">
+                  🔍
+              </button>
+          
+
+
+      </div>
+
+      
+        <select id="clubFilter" class="w-full px-3 py-1.5 border border-gray-300 rounded-md shadow-sm text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option value="">All Clubs</option>
+          <option value="Media Club">Media Club</option>
+          <option value="Theater Club">Theater Club</option>
+          <option value="Debating Society">Debating Society</option>
+          <option value="Community Wellness Club">Community Wellness Club</option>
+        </select>
+      </div>
     </div>
-    
-    <div class="activity-list grid gap-6">
-
-        <div class="activity-card bg-white p-6 rounded-xl shadow-md" >
-        <h3 class="text-xl font-semibold mb-2">Photography Workshop</h3>
-        <p><strong>Club:</strong> Media Club</p>
-        <p><strong>Date & Time:</strong> April 6, 2025 @ 3:00 PM</p>
-        <p class="desc mb-3">Learn professional photography techniques from experts.</p>
-        <a href="activityDetails.html#photography-workshop" class="view-button bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 text-sm">View Details</a>
-      </div>
-    
-      <div class="activity-card bg-white p-6 rounded-xl shadow-md" >
-        <h3 class="text-xl font-semibold mb-2" >Drama Night</h3>
-        <p><strong>Club:</strong> Theater Club</p>
-        <p><strong>Date & Time:</strong> April 10, 2025 @ 6:00 PM</p>
-        <p class="desc mb-3">A night of laughter and emotion with 3 original plays.</p>
-        <a href="activityDetails.html#drama-night" class="view-button bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 text-sm">View Details</a>
-      </div>
-
-      <div class="activity-card" >
-        <h3>Debate Day</h3>
-        <p><strong>Club:</strong> Debating Society</p>
-        <p><strong>Date & Time:</strong>April 9, 2025 @ 4:00 PM</p>
-        <P class="desc mb-3">Learn how to debate on any topic</P>
-        <a href="activityDetails.html#debate-day" class="view-button bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 text-sm">View Details</a>
+       
+      <div class="text-box">
+          <h1 class="text-4xl font-bold text-center text-gray-800">Club Activities</h1>
+          
       </div>
       
-      <div class="activity-card" >
-        <h3>Campus Clean Up Green Up</h3>
-        <p><strong>Club:</strong> Community Wellness Club</p>
-        <p><strong>Date & Time:</strong>April 9, 2025 @ 4:00 PM</p>
-        <P class="desc mb-3"> Make our campus a cleaner and greener place!</P>
-        <a href="activityDetails.html#ccu-gu" class="view-button bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 text-sm">View Details</a>
-      </div>
-    </div>
+      <div class="activity-list grid gap-6">
 
-    <div class="form-button flex justify-center mt-8">
-        <a href="activityCreationForm.html">
-        <button class="bg-gray-700 text-white px-6 py-3 rounded-full hover:bg-gray-800">
-           Add New Activity </button>
-        </a>
-    </div>
-        
-</body>
+          
+      </div>
+      <div class="pagination flex justify-center gap-4 my-6">
+        <button id="prevBtn" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Previous</button>
+        <span id="pageInfo" class="py-2">Page 1</span>
+        <button id="nextBtn" class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300">Next</button>
+      </div>
+    
+
+      <div class="form-button flex justify-center mt-8">
+          <a href="activityCreationForm.html">
+          <button class="bg-gray-700 text-white px-6 py-3 rounded-full hover:bg-gray-800">
+            Add New Activity </button>
+          </a>
+      </div>
+
+      
+      <script src="activities.js"></script>
+  </body>
 </html>
