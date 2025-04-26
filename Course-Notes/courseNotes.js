@@ -54,3 +54,8 @@ function applyFilters(notes) {
     });
     return sortedNotes.filter(note => note.title.toLowerCase().includes(searchTerm));
 }
+
+function paginate(notes) {
+    const startIndex = (currentPage - 1) * notesPerPage;
+    return notes.slice(startIndex, startIndex + notesPerPage);
+}
