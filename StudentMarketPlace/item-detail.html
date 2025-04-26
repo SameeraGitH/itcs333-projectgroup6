@@ -15,33 +15,83 @@
   </header>
 
   <!-- Main -->
-  <main class="container">
-    <article class="custom-card">
-      <h2 class="text-2xl font-semibold text-blue-700">Used Laptop</h2>
-      <p class="text-sm text-gray-500 mt-1">Category: Electronics | Price: $250</p>
-      <p class="mt-4 text-gray-700">Lenovo ThinkPad in great condition. Battery life excellent. Comes with charger and bag.</p>
-      <p class="mt-2 text-gray-600">Contact: student@example.com</p>
+  <main class="container mx-auto p-6">
+    <article id="item-details" class="custom-card bg-white p-6 rounded shadow-md">
+      <h2 id="item-title" class="text-2xl font-semibold text-blue-700"></h2>
+      <p id="item-meta" class="text-sm text-gray-500 mt-1"></p>
+      <p id="item-description" class="mt-4 text-gray-700"></p>
+      <p id="item-contact" class="mt-2 text-gray-600"></p>
 
       <div class="mt-6 flex flex-wrap gap-4">
-        <button class="add-btn">Edit</button>
-        <button class="delete-btn">Delete</button>
-        <a href="marketplace.html" class="secondary-btn">Back</a>
+        <button id="edit-btn" class="add-btn bg-green-500 text-white px-4 py-2 rounded">Edit</button>
+        <button id="delete-btn" class="delete-btn bg-red-500 text-white px-4 py-2 rounded">Delete</button>
+        <a href="marketplace.html" class="secondary-btn text-blue-600">Back</a>
       </div>
 
-      <!-- Comments -->
+      <!-- Comments Section -->
       <div class="mt-10">
         <h3 class="text-lg font-semibold mb-2">Comments</h3>
-        <textarea placeholder="Add your comment..." class="w-full mb-2"></textarea>
-        <button class="add-btn">Post</button>
+        <textarea id="comment-input" placeholder="Add your comment..." class="w-full mb-2 p-2 border rounded"></textarea>
+        <button id="post-comment-btn" class="add-btn bg-blue-500 text-white px-4 py-2 rounded">Post</button>
 
-        <!-- Example Comment -->
-        <div class="mt-4 border border-gray-200 p-3 rounded-lg bg-white">
-          <strong class="text-blue-600">Ali:</strong>
-          <p>Is this still available?</p>
+        <div id="comments-section" class="mt-4 space-y-3">
+          <!-- Comments will appear here -->
         </div>
       </div>
     </article>
   </main>
+
+  <!-- JavaScript to make page dynamic -->
+  <script>
+    // Dummy data (in real app, you fetch this!)
+    const itemData = {
+      title: "Used Laptop",
+      category: "Electronics",
+      price: 250,
+      description: "Lenovo ThinkPad in great condition. Battery life excellent. Comes with charger and bag.",
+      contact: "student@example.com"
+    };
+
+    // Populate item details
+    document.getElementById('item-title').textContent = itemData.title;
+    document.getElementById('item-meta').textContent = `Category: ${itemData.category} | Price: $${itemData.price}`;
+    document.getElementById('item-description').textContent = itemData.description;
+    document.getElementById('item-contact').textContent = `Contact: ${itemData.contact}`;
+
+    // Handle Delete
+    document.getElementById('delete-btn').addEventListener('click', function() {
+      const confirmed = confirm("Are you sure you want to delete this item?");
+      if (confirmed) {
+        alert("Item deleted! (Here you would call the API to actually delete it.)");
+        window.location.href = "marketplace.html"; // redirect back to marketplace
+      }
+    });
+
+    // Handle Comments
+    const commentInput = document.getElementById('comment-input');
+    const postCommentBtn = document.getElementById('post-comment-btn');
+    const commentsSection = document.getElementById('comments-section');
+
+    postCommentBtn.addEventListener('click', function() {
+      const commentText = commentInput.value.trim();
+      if (commentText.length === 0) {
+        alert("Comment cannot be empty!");
+        return;
+      }
+
+      const commentDiv = document.createElement('div');
+      commentDiv.className = "border border-gray-200 p-3 rounded-lg bg-white";
+
+      commentDiv.innerHTML = `
+        <strong class="text-blue-600">You:</strong>
+        <p>${commentText}</p>
+      `;
+
+      commentsSection.appendChild(commentDiv);
+      commentInput.value = ""; // clear the textarea
+    });
+
+  </script>
 
 </body>
 </html>
