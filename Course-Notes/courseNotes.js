@@ -63,3 +63,16 @@ function paginate(notes) {
 searchInput.addEventListener('input', renderNotes);
 
 sortSelect.addEventListener('change', renderNotes);
+
+previousButton.addEventListener('click', () => {
+    if (currentPage > 1) {
+        currentPage--;
+        renderNotes();
+    }
+});
+nextButton.addEventListener('click', () => {
+    if (currentPage < Math.ceil(notes.length / notesPerPage)) {
+        currentPage++;
+        renderNotes();
+    }
+});
