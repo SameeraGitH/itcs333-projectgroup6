@@ -87,3 +87,8 @@ function viewDetail(noteId) {
         `;
     }
 }
+
+function deleteNote(noteId) {
+    notes = notes.filter(note => note.id !== noteId);
+    renderNotes();
+}
