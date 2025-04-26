@@ -13,3 +13,18 @@ document.body.appendChild(loadingIndicator);
 let notes = [];
 let currentPage = 1;
 const notesPerPage = 2;
+
+async function fetchNotes() {
+    loadingIndicator.style.display = 'block';
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts'); 
+        if (!response.ok) throw new Error('Network response was not ok');
+        
+        notes = await response.json();
+        renderNotes();
+    } catch (error) {
+        console.error('Error fetching notes:', error);
+    } finally {
+        loadingIndicator.style.display = 'none';
+    }
+}
