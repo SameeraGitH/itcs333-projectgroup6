@@ -61,3 +61,5 @@ function paginate(notes) {
 }
 
 searchInput.addEventListener('input', renderNotes);
+
+sortSelect.addEventListener('change', renderNotes);
