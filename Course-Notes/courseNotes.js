@@ -59,3 +59,5 @@ function paginate(notes) {
     const startIndex = (currentPage - 1) * notesPerPage;
     return notes.slice(startIndex, startIndex + notesPerPage);
 }
+
+searchInput.addEventListener('input', renderNotes);
