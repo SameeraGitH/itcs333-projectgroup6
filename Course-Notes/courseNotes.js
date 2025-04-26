@@ -28,3 +28,20 @@ async function fetchNotes() {
         loadingIndicator.style.display = 'none';
     }
 }
+
+function renderNotes() {
+    notesList.innerHTML = ''; // Clear current notes
+    const filteredNotes = applyFilters(notes);
+    const paginatedNotes = paginate(filteredNotes);
+    paginatedNotes.forEach(note => {
+        const noteItem = document.createElement('article');
+        noteItem.className = 'note-item';
+        noteItem.innerHTML = `
+            <h3>${note.title}</h3>
+            <p>${note.body.substring(0, 50)}...</p>
+            <button onclick="viewDetail(${note.id})">View</button>
+            <button onclick="deleteNote(${note.id})">Delete</button>
+        `;
+        notesList.appendChild(noteItem);
+    });
+}
