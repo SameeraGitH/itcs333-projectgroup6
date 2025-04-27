@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="courseNotes.css">
+    <title>Course Notes</title>
+</head>
+<body>
+    <header>
+        <div id="navbarNav">
+            <ul class="flex">
+                <li><a class="nav-link" href="#Home">Home</a></li>
+                <li><a class="nav-link" href="#events">Events</a></li>
+                <li><a class="nav-link" href="#reviews">Course Reviews</a></li>
+                <li><a class="nav-link" href="#Notes">course Notes</a></li>
+                <li><a class="nav-link" href="#News">Campus News</a></li>
+                <li><a class="nav-link" href="#Activities">Club Activities</a></li>
+                <li><a class="nav-link" href="#marketplace">Student Marketplace</a></li>
+        
+            </ul>
+        </div>
+
+        <div>
+        <h1>Course Notes</h1>
+        </div>
+
+    </header>
+    <nav>
+        <ul>
+            <li ><a href="#listing">Notes Listing</a></li> 
+            <li ><a href="#create">Add New Note</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="listing">
+            <h2 id = "Notes-Listing" >Notes Listing</h2>
+            <div class="search-bar">
+                <input type="text" placeholder="Search notes..." aria-label="Search notes">
+                <button>Search</button>
+            </div>
+
+            <div class="sorting-controls">
+                <label for="sort">Sort By:</label>
+                <select id="sort">
+                    <option value="date">Date</option>
+                    <option value="title">Title</option>
+                </select>
+                
+                <br>
+                <br>
+
+                <button>Previous</button>
+                <button>Next</button>
+
+                <br>
+                <br>
+
+                <button class="add-button">Add New Note</button>
+            </div>
+            
+            <br>
+            <br>
+
+            <div class="notes-list">
+                <article class="note-item">
+                    <h3>Note Title 1</h3>
+                    <p>Short description or excerpt of the note...</p>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </article>
+                <article class="note-item">
+                    <h3>Note Title 2</h3>
+                    <p>Short description or excerpt of the note...</p>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </article>
+            </div>
+        </section>
+        
+        <br>
+        <br>
+        <hr class="bold" color="#2b4e73"> 
+        <br>
+        <br>
+        
+        <section id="create">
+            <h2>Add New Note</h2>
+            <form>
+                <label for="title">Title <span class="required">*</span></label>
+                <input type="text" id="title" name="title" required placeholder="Enter note title">
+                
+                <label for="content">Content <span class="required">*</span></label>
+                <textarea id="content" name="content" required placeholder="Enter note content"></textarea>
+                
+                <button type="submit">Submit</button>
+                <button type="button" onclick="window.history.back();">Cancel</button>
+            </form>
+        </section>
+        
+        <br>
+        <br>
+        <hr class="bold" color="#2b4e73">
+        <br>
+        <br>
+
+        <section >
+            <h2 id = "Note">Note Detail View</h2>
+            <article>
+                <div id="details">
+                <h3>Note Title</h3>
+                <p>Full content of the note...</p>
+                <button>Edit</button>
+                <button>Delete</button>
+                <div class="comments-section">
+                    <h4>Comments</h4>
+                    <p>No comments yet.</p>
+                </div>
+                </div>
+                
+                <br>
+                <br>
+
+                <div id="Back-to-Listing">
+                <button onclick="window.history.back();">Back to Listing</button>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Campus Hub</p>
+    </footer>
+
+    <script src="courseNotes.js" > </script>
+</body>
+</html> 
+
