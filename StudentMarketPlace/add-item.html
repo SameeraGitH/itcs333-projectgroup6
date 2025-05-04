@@ -16,15 +16,20 @@
 
   <!-- Main -->
   <main class="container mx-auto p-6">
-    <form id="addItemForm" action="https://309558c3-c43f-4752-81ff-6ed53ad85e99-00-2x7lu5mdimdw2.sisko.replit.dev/create.php" method="POST" enctype="multipart/form-data" class="bg-white p-6 rounded shadow-md space-y-4">
+    <form id="addItemForm"
+      action="https://309558c3-c43f-4752-81ff-6ed53ad85e99-00-2x7lu5mdimdw2.sisko.replit.dev/createAddItem.php"
+      method="POST"
+      enctype="multipart/form-data"
+      class="bg-white p-6 rounded shadow-md space-y-4">
+
       <div>
         <label for="title">Item Title</label>
-        <input type="text" id="title" placeholder="e.g. Physics Book" required class="input-field" />
+        <input type="text" id="title" name="title" placeholder="e.g. Physics Book" required class="input-field" />
       </div>
 
       <div>
         <label for="category">Category</label>
-        <select id="category" required class="input-field">
+        <select id="category" name="category" required class="input-field">
           <option value="">Select a category</option>
           <option>Books</option>
           <option>Electronics</option>
@@ -34,22 +39,22 @@
 
       <div>
         <label for="price">Price (USD)</label>
-        <input type="number" id="price" placeholder="e.g. 20" required class="input-field" />
+        <input type="number" id="price" name="price" placeholder="e.g. 20" required class="input-field" />
       </div>
 
       <div>
         <label for="description">Description</label>
-        <textarea id="description" placeholder="Write a short description..." required class="input-field"></textarea>
+        <textarea id="description" name="description" placeholder="Write a short description..." required class="input-field"></textarea>
       </div>
 
       <div>
         <label for="contact">Contact Info</label>
-        <input type="email" id="contact" placeholder="you@example.com" required class="input-field" />
+        <input type="email" id="contact" name="contact" placeholder="you@example.com" required class="input-field" />
       </div>
 
       <div>
         <label for="image">Image (optional)</label>
-        <input type="file" id="image" class="input-field" />
+        <input type="file" id="image" name="image" class="input-field" />
       </div>
 
       <div class="flex flex-wrap gap-4 mt-4">
@@ -68,7 +73,7 @@
     const errorMessage = document.getElementById('error-message');
 
     form.addEventListener('submit', function(event) {
-      event.preventDefault(); // stop the page from refreshing
+      // event.preventDefault(); ← this line was removed
 
       // Gather form values
       const title = document.getElementById('title').value.trim();
@@ -80,29 +85,27 @@
       // Simple form validation
       if (title.length < 3) {
         showError('Title must be at least 3 characters long.');
-        return;
+        event.preventDefault(); return;
       }
       if (category === "") {
         showError('Please select a category.');
-        return;
+        event.preventDefault(); return;
       }
       if (price === "" || isNaN(price) || Number(price) <= 0) {
         showError('Please enter a valid price.');
-        return;
+        event.preventDefault(); return;
       }
       if (description.length < 10) {
         showError('Description must be at least 10 characters.');
-        return;
+        event.preventDefault(); return;
       }
       if (!validateEmail(contact)) {
         showError('Please enter a valid email address.');
-        return;
+        event.preventDefault(); return;
       }
 
-      // If all good, hide error and show success.
       errorMessage.classList.add('hidden');
-      alert('Item successfully added! (You can later connect it to an API)');
-      form.reset();
+      // Let the form submit to PHP
     });
 
     function showError(message) {
