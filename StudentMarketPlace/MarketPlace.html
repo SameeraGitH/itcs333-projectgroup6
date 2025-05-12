@@ -63,7 +63,7 @@
     async function fetchItems() {
       try {
         itemsGrid.innerHTML = '<p>Loading...</p>';
-        const response = await fetch('api/getItems.php');
+        const response = await fetch('https://309558c3-c43f-4752-81ff-6ed53ad85e99-00-2x7lu5mdimdw2.sisko.replit.dev/getItems.php');
         if (!response.ok) throw new Error('Failed to fetch data.');
 
         const data = await response.json();
