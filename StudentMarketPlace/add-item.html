@@ -85,27 +85,32 @@
       // Simple form validation
       if (title.length < 3) {
         showError('Title must be at least 3 characters long.');
+        form.scrollIntoView({ behavior: 'smooth' });
         event.preventDefault(); return;
       }
       if (category === "") {
         showError('Please select a category.');
+        form.scrollIntoView({ behavior: 'smooth' });
         event.preventDefault(); return;
       }
       if (price === "" || isNaN(price) || Number(price) <= 0) {
         showError('Please enter a valid price.');
+        form.scrollIntoView({ behavior: 'smooth' });
         event.preventDefault(); return;
       }
       if (description.length < 10) {
         showError('Description must be at least 10 characters.');
+        form.scrollIntoView({ behavior: 'smooth' });
         event.preventDefault(); return;
       }
       if (!validateEmail(contact)) {
         showError('Please enter a valid email address.');
+        form.scrollIntoView({ behavior: 'smooth' });
         event.preventDefault(); return;
       }
 
       errorMessage.classList.add('hidden');
-      // Let the form submit to PHP
+      // Let the form submit to PHP>
     });
 
     function showError(message) {
