@@ -43,29 +43,54 @@
 
   <!-- JavaScript to make page dynamic -->
   <script>
-    // Dummy data (in real app, you fetch this!)
-    const itemData = {
-      title: "Used Laptop",
-      category: "Electronics",
-      price: 250,
-      description: "Lenovo ThinkPad in great condition. Battery life excellent. Comes with charger and bag.",
-      contact: "student@example.com"
-    };
+    // Get the item ID from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const itemId = urlParams.get('id'); // This gets the 'id' from the URL (e.g., ?id=123)
 
-    // Populate item details
-    document.getElementById('item-title').textContent = itemData.title;
-    document.getElementById('item-meta').textContent = `Category: ${itemData.category} | Price: $${itemData.price}`;
-    document.getElementById('item-description').textContent = itemData.description;
-    document.getElementById('item-contact').textContent = `Contact: ${itemData.contact}`;
 
-    // Handle Delete
-    document.getElementById('delete-btn').addEventListener('click', function() {
+    async function fetchItemDetails() {
+      try {
+        // Fetch item data from the backend
+        const response = await fetch(`https://replit.com/@xbayaneh3/my-app/getItem.php?id=${itemId}`);
+        if (!response.ok) throw new Error('Failed to fetch item details.');
+
+        const itemData = await response.json(); // The response is assumed to be in JSON format
+
+        // Populate item details
+        document.getElementById('item-title').textContent = itemData.title;
+        document.getElementById('item-meta').textContent = `Category: ${itemData.category} | Price: $${itemData.price}`;
+        document.getElementById('item-description').textContent = itemData.description;
+        document.getElementById('item-contact').textContent = `Contact: ${itemData.contact}`;
+      } catch (error) {
+        alert(error.message);
+      }
+    }
+
+    // Call the function to load item details
+    fetchItemDetails();
+
+    
+
+    // Handle Delete Button
+    document.getElementById('delete-btn').addEventListener('click', async function() {
       const confirmed = confirm("Are you sure you want to delete this item?");
       if (confirmed) {
-        alert("Item deleted! (Here you would call the API to actually delete it.)");
-        window.location.href = "marketplace.html"; // redirect back to marketplace
+        try {
+          // Send DELETE request to the backend
+          const response = await fetch(`https://replit.com/@xbayaneh3/my-app/deleteItem.php?id=${itemId}`, {
+            method: 'DELETE',
+          });
+
+          if (!response.ok) throw new Error('Failed to delete item.');
+
+          alert("Item deleted!");
+          window.location.href = "marketplace.html"; // redirect back to marketplace
+        } catch (error) {
+          alert(error.message);
+        }
       }
     });
+
 
     // Handle Comments
     const commentInput = document.getElementById('comment-input');
