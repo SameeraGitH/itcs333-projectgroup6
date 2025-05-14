@@ -30,5 +30,15 @@ function createNote() {
     echo json_encode(['message' => 'Note created successfully']);
 }
 
+//function to fetch notes.
+<?php
+function getNotes() {
+    global $pdo;
+    $stmt = $pdo->query('SELECT * FROM notes');
+    $notes = $stmt->fetchAll();
+
+    echo json_encode($notes);
+}
+?>
 
 ?>
