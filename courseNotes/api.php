@@ -6,6 +6,7 @@ $pass = 'ma123467';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+
 $options = [
     PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -14,11 +15,12 @@ $options = [
 
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
+    echo "Database connection successful!";
 } catch (\PDOException $e) {
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-//function to handle creating new notes
+// Function to create a new note
 function createNote() {
     global $pdo;
     $title = $_POST['title'];
@@ -30,8 +32,7 @@ function createNote() {
     echo json_encode(['message' => 'Note created successfully']);
 }
 
-//function to fetch notes.
-<?php
+// Function to fetch all notes
 function getNotes() {
     global $pdo;
     $stmt = $pdo->query('SELECT * FROM notes');
@@ -39,6 +40,31 @@ function getNotes() {
 
     echo json_encode($notes);
 }
-?>
+
+// Function to update a note
+function updateNote() {
+    global $pdo;
+    $id = $_POST['id'];
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+
+    $stmt = $pdo->prepare('UPDATE notes SET title = ?, content = ? WHERE id = ?');
+    $stmt->execute([$title, $content, $id]);
+
+    echo json_encode(['message' => 'Note updated successfully']);
+}
+
+// Function to delete a note
+function deleteNote() {
+    global $pdo;
+    $id = $_POST['id'];
+
+    $stmt = $pdo->prepare('DELETE FROM notes WHERE id = ?');
+    $stmt->execute([$id]);
+
+    echo json_encode(['message' => 'Note deleted successfully']);
+}
+
 
 ?>
+
