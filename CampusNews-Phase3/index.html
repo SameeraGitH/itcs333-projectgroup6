@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus News | Campus Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3a5a78',
+            'primary-light': '#eef5fc',
+            secondary: '#f8b400',
+            accent: '#e63946',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <div class="flex justify-between items-center">
+        <a class="text-primary font-bold text-xl" href="#">Campus Hub</a>
+        <div class="flex items-center lg:hidden">
+          <input id="menu-toggle" type="checkbox" class="hidden peer" />
+          <label for="menu-toggle" class="cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </label>
+        </div>
+      </div>
+      <ul class="flex-col gap-4 mt-4 lg:mt-0 lg:flex lg:flex-row lg:space-x-6 lg:justify-end lg:items-center peer-checked:flex hidden">
+        <li><a class="text-gray-600 hover:text-primary" href="#Home">Home</a></li>
+        <li><a class="text-gray-600 hover:text-primary" href="#events">Events</a></li>
+        <li><a class="text-gray-600 hover:text-primary" href="#reviews">Course Reviews</a></li>
+        <li><a class="text-gray-600 hover:text-primary" href="#Notes">Course Notes</a></li>
+        <li><a class="text-primary font-medium" href="#News">Campus News</a></li>
+        <li><a class="text-gray-600 hover:text-primary" href="#Activities">Club Activities</a></li>
+        <li><a class="text-gray-600 hover:text-primary" href="#marketplace">Student Marketplace</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-primary to-blue-900 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4">
+      <h1 class="text-3xl font-bold mb-2">Campus News</h1>
+      <p class="text-lg opacity-90">Stay updated with the latest happenings around campus</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 py-8">
+
+    <!-- News Grid -->
+    <div id="newsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+
+    </div>
+
+    <!-- Creation Form Section (Restored) -->
+    <section id="item-creation-form" class="mt-12">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="bg-primary text-white p-4">
+            <h3 class="text-xl font-bold">Post Campus News</h3>
+          </div>
+          <div class="p-6">
+            <form>
+              <div class="mb-6">
+                <label for="newsTitle" class="block text-gray-700 font-medium mb-2">News Title <span class="text-accent">*</span></label>
+                <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" id="newsTitle" required>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label for="newsCategory" class="block text-gray-700 font-medium mb-2">Category <span class="text-accent">*</span></label>
+                  <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" id="newsCategory" required>
+                    <option value="" selected disabled>Select category</option>
+                    <option value="academic">Academic</option>
+                    <option value="sports">Sports</option>
+                    <option value="events">Events</option>
+                    <option value="campus-life">Campus Life</option>
+                    <option value="announcements">Announcements</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="newsDate" class="block text-gray-700 font-medium mb-2">Publication Date <span class="text-accent">*</span></label>
+                  <input type="date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" id="newsDate" required>
+                </div>
+              </div>
+              <div class="mb-6">
+                <label for="newsImage" class="block text-gray-700 font-medium mb-2">Featured Image</label>
+                <input type="file" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" id="newsImage">
+                <div class="text-gray-500 text-sm mt-1">Recommended size: 800x450 pixels</div>
+              </div>
+              <div class="mb-6">
+                <label for="newsSummary" class="block text-gray-700 font-medium mb-2">Summary <span class="text-accent">*</span></label>
+                <textarea class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" id="newsSummary" rows="2" required></textarea>
+              </div>
+              <div class="mb-6">
+                <label for="newsContent" class="block text-gray-700 font-medium mb-2">Content <span class="text-accent">*</span></label>
+                <textarea class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" id="newsContent" rows="8" required></textarea>
+              </div>
+              <div class="mb-6">
+                <div class="flex items-center mb-3">
+                  <input type="checkbox" id="featuredNews" class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary">
+                  <label for="featuredNews" class="ml-2 text-gray-700">Mark as featured news</label>
+                </div>
+                <div class="flex items-center">
+                  <input type="checkbox" id="urgentNews" class="w-4 h-4 text-accent border-gray-300 rounded focus:ring-accent">
+                  <label for="urgentNews" class="ml-2 text-gray-700">Mark as urgent</label>
+                </div>
+              </div>
+              <div class="flex justify-between">
+                <a href="#" class="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 transition">Cancel</a>
+                <button type="submit" class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-blue-800 transition">Publish News</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-800 text-white py-8 mt-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h5 class="text-lg font-bold mb-4">Campus Hub</h5>
+          <p class="text-gray-300">Your one-stop platform for campus resources and information.</p>
+        </div>
+        <div>
+          <h5 class="text-lg font-bold mb-4">Quick Links</h5>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Home</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Campus News</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Events</a></li>
+            <li><a href="#" class="text-gray-300 hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="text-lg font-bold mb-4">Contact</h5>
+          <address>
+            <p class="mb-1 text-gray-300">1234 University Ave.</p>
+            <p class="mb-1 text-gray-300">College Town, ST 12345</p>
+            <p class="mb-1 text-gray-300">Email: info@campushub.edu</p>
+          </address>
+        </div>
+      </div>
+      <hr class="my-6 border-gray-700">
+      <div class="text-center">
+        <p class="text-gray-400">&copy; 2025 Campus Hub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+</html>
