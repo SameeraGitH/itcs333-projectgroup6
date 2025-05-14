@@ -1,19 +1,17 @@
-
-
 body {
   font-family: 'Arial', sans-serif;
 }
 
 header {
-  background-color: #2c5282; 
+  background-color: #2c5282;
 }
 
 footer {
-  background-color: #2c5282; /
+  background-color: #2c5282;
 }
 
 .event-item h2 {
-  color: #2b6cb0; 
+  color: #2b6cb0 !important;
 }
 
 .pagination button {
@@ -21,6 +19,7 @@ footer {
 }
 
 .pagination button:hover {
-  background-color: #3182ce; 
+  background-color: #3182ce;
 }
+
 

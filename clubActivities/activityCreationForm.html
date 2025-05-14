@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-blue-100 min-h-screen flex items-center justify-center p-4">
+    <div id="message" class="fixed top-4 right-4 hidden"></div>
+    <form id="activityForm" class="bg-white shadow-xl rounded-lg p-8 w-full max-w-lg">      
+        <div class="mb-4">
+            <label for="activityTitle">Activity Name</label>
+            <input type="text" name="activityTitle" id="activityTitle" placeholder="e.g. Photography Workshop" required>
+        </div>
+        
+        <div class="mb-4">
+            <label for="clubName">Club Name</label>
+            <input type="text" name="clubName" id="clubName" placeholder="e.g. Media Club" required>
+        </div>
+        
+        <div class="mb-4">
+            <label for="dateTime">Date & Time</label>
+            <input type="text" name="dateTime" id="dateTime" placeholder="e.g. April 6, 2025 @ 3:00 PM" required>
+        </div>
+        
+        <div class="mb-4">
+            <label for="description">Description</label>
+            <input type="text" name="description" id="description" placeholder="e.g. Learn professional techniques..." required>
+        </div>
+    
+        <br>
+        <div class="form-button-container flex justify-between gap-3flex justify-between gap-3">
+            <input type="reset" value="Reset"  class="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 cursor-pointer w-full"/>
+        
+            <input type="submit" value="Submit" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 cursor-pointer w-full"
+            />
+            <button type="button" onclick="window.location.href='index.html' "class="bg-gray-600 text-white px-4 py-2 rounded-full hover:bg-gray-700 cursor-pointer w-full">
+            Go Back
+            </button>   
+    
+        </div>
+
+
+    </form>
+    <div id="message" class="fixed top-4 right-4 hidden bg-green-500 text-white px-4 py-2 rounded shadow-lg"></div>
+    <script>
+        document.getElementById('activityForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const message = document.getElementById('message');
+            const form = e.target;
+            
+            // Showing the loading state
+            message.textContent = "Submitting...";
+            message.className = "fixed top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded shadow-lg";
+            message.classList.remove('hidden');
+        
+            
+            const newActivity = {
+                id: Date.now(),
+                title: form.activityTitle.value,
+                club: form.clubName.value,
+                dateTime: form.dateTime.value,
+                description: form.description.value
+            };
+        
+            try {
+                // Saving to localStorage
+                let activities = JSON.parse(localStorage.getItem('activities') || '[]');
+                activities.unshift(newActivity);
+                localStorage.setItem('activities', JSON.stringify(activities));
+        
+                // Success message code
+                message.textContent = "✓ Activity submitted!";
+                message.className = "fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg";
+        
+                // this right here does the redirection 
+                setTimeout(() => {
+                    window.location.href = "index.html?success=true";
+                }, 1500);
+        
+            } catch (error) {
+                console.error("Submission failed:", error);
+                message.textContent = "⚠ Failed to submit";
+                message.className = "fixed top-4 right-4 bg-red-500 text-white px-4 py-2 rounded shadow-lg";
+            }
+        });
+    </script>
+        
+
+
+
+</body>
+</html>

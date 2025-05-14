@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details of the activity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 font-sans text-gray-800 p-4" >
+    <div id="activityDetails" class="p-8 bg-white rounded shadow-md"></div>
+
+    <div class="activity-details bg-white p-6 rounded-2xl shadow-md max-w-3xl mx-auto my-8" id="photography-workshop">
+        <h2 class="text-2xl font-bold mb-4">Photography Workshop</h2>
+        <p><strong>By Club: </strong>Media Club</p>
+        <p><strong>Date & Time: </strong>April 6, 2025 @ 3:00 PM </p>
+        <p><strong>Place: Media Club </strong> </p>
+        <p><strong>Description: </strong>Special guests from abroad will be present at the club to teach how to level up from amateur to pro level photography, and also to give exclusive hands-on tips and tricks! </p>
+    </div>
+
+    <div class="activity-details bg-white p-6 rounded-2xl shadow-md max-w-3xl mx-auto my-8" id="drama-night">
+        <h2 class="text-2xl font-bold mb-4">Drama Night</h2>
+        <p><strong>By Club: </strong>Theater Club</p>
+        <p><strong>Date & Time: </strong>April 10, 2025 @ 6:00 PM </p>
+        <p><strong>Place: Theater Club </strong> </p>
+        <p><strong>Description: </strong>Showcase your acting/musical skills and you can also come just for entertainment!!</p>
+    </div>
+
+    <div class="activity-details bg-white p-6 rounded-2xl shadow-md max-w-3xl mx-auto my-8" id="debate-day">
+        <h2 class="text-2xl font-bold mb-4">Debate Day</h2>
+        <p><strong>By Club: </strong>Debating Society</p>
+        <p><strong>Date & Time: </strong>April 9, 2025 @ 4:00 PM </p>
+        <p><strong>Place: Debate arena</strong> </p>
+        <p><strong>Description: </strong>Learn from language and communication experts how imporve your debating skills. Get a chance to be a part of many debates that are to come.</p>
+    </div>
+
+    <div class="activity-details bg-white p-6 rounded-2xl shadow-md max-w-3xl mx-auto my-8" id="ccu-gu">
+        <h2 class="text-2xl font-bold mb-4">Campus Clean Up Green Up</h2>
+        <p><strong>By Club: </strong>Community Wellness Club</p>
+        <p><strong>Date & Time: </strong>April 9, 2025 @ 4:00 PM </p>
+        <p><strong>Place: Community Wellness Club Club </strong> </p>
+        <p><strong>Description: </strong>A positive contribution to the community and the ecological well-being of the campus.It’s a great community initiative, offering a diverse student body to come together and do some good.</p>
+    </div>
+
+
+    <div class="flex justify-center mt-10">
+     <a href="index.html" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-full transition duration-200">Back to Activities</a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const id = window.location.hash.substring(1); 
+            
+            if (!id) {
+                document.getElementById('activityDetails').innerHTML = "<p class='text-red-500'>No activity found.</p>";
+                return;
+            }
+            
+            try {
+                // here im loading activities from localStorage
+                let savedActivities = JSON.parse(localStorage.getItem('activities')) || [];
+        
+                // here loading activities from activities.json
+                const response = await fetch('activities.json');
+                const jsonActivities = await response.json();
+        
+                // Combine both here
+                const allActivities = [...savedActivities, ...jsonActivities];
+        
+                const activity = allActivities.find(a => String(a.id) === id);
+        
+                if (activity) {
+                    document.getElementById('activityDetails').innerHTML = `
+                        <div class="bg-white p-8 rounded-lg shadow-lg">
+                            <h2 class="text-2xl font-bold mb-4">${activity.title}</h2>
+                            <p class="mb-2"><strong>Club:</strong> ${activity.club}</p>
+                            <p class="mb-2"><strong>Date & Time:</strong> ${activity.dateTime}</p>
+                            <p class="mt-4">${activity.description}</p>
+                        </div>
+                    `;
+                } else {
+                    document.getElementById('activityDetails').innerHTML = "<p class='text-red-500'>Activity not found.</p>";
+                }
+            } catch (error) {
+                console.error("Error loading activity:", error);
+                document.getElementById('activityDetails').innerHTML = "<p class='text-red-500'>Failed to load activity details.</p>";
+            }
+        });
+    </script>
+        
+        
+</body>
+</html>

@@ -1,0 +1,195 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eff0f1;   
+}
+
+header h1 {
+    background-color: #022b5d;
+    color:whitesmoke;
+    font-size: 30px;
+    padding: 10px ;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    text-align: center ;
+    height: 70px;
+    margin-top: 10px;
+}
+
+.flex{
+    background-color: #eff0f1;
+    border: none;
+    height: 10px;
+    text-align: right;
+    padding-right: 0%;
+    padding-bottom: 5px;
+
+}
+
+.nav-link{
+    color:#022b5d;
+    text-decoration: none;
+    margin-right: 0%;
+    margin-bottom: 5px;
+}
+
+.nav-link:hover{
+    color:rgb(140, 177, 228);
+}
+
+.nav-link:visited{
+    color:cadetblue;
+}
+
+nav{
+    
+    height: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+ul {
+    list-style-type: none;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 50px ;
+    overflow: hidden;
+    background-color: rgb(207, 221, 240);
+    border: 3px solid #022b5d;
+    border-radius: 10px;
+    text-align: center;
+}
+
+li {
+    display: inline;
+    margin: 15px;
+    
+    
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none; 
+    font-size: 17px; 
+}
+
+
+li a:hover{
+    color: whitesmoke;
+}
+main {
+    padding: 50px;
+    
+}
+
+h1, h2, h3, h4 {
+    color: black;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+    padding: 15px;
+    height: 60px;
+    
+}
+
+.search-bar input {
+    padding: 10px;
+    width: 500px;
+}
+
+.sorting-controls {
+    margin-bottom: 1px;
+    padding: 15px;
+    height: 80px;;
+    
+
+}
+
+.pagination-controls {
+    margin: 15px 0;
+}
+
+.notes-list {
+    margin-top: 1px;
+    margin: 10px 0;
+}
+
+.note-item {
+    background-color: rgb(207, 221, 240);
+    padding: 15px;
+    border-radius: 5px;
+    margin: 10px 0;
+    border: 1px solid #022b5d;
+}
+
+.add-button {
+    background-color: #358648;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+form {
+    background-color: rgb(207, 221, 240);
+    padding: 20px;
+    border: 1px solid #022b5d;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+form label {
+    display: block;
+    margin-bottom: 15px;
+}
+
+form input, form textarea {
+    width: 99%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #a09f9f;
+}
+
+button {
+    padding: 10px;
+    margin-right: 5px;
+}
+
+.required {
+    color: red;
+}
+
+footer {
+    text-align : center;
+}
+
+#details {
+    text-align : left;
+    background-color: rgb(207, 221, 240);
+    padding: 30px;
+    border: 1px solid #022b5d;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+.search-bar{
+    text-align: center;
+}
+
+.sorting-controls {
+    text-align: right ;
+}
+
+
+#Notes-Listing {
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 2px;
+    height: 2px;
+}
+
+#Back-to-Listing {
+    text-align: center;
+}

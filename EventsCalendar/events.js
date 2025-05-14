@@ -1,98 +1,111 @@
-const eventsContainer = document.getElementById('eventsContainer');
-const searchInput = document.getElementById('searchInput');
-const pagination = document.getElementById('pagination');
-const message = document.getElementById('message');
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("add-event-form");
+  const titleInput = document.getElementById("event-title");
+  const dateInput = document.getElementById("event-date");
+  const descInput = document.getElementById("event-description");
+  const eventList = document.querySelector(".event-list");
+  const searchInput = document.querySelector(".search-input");
+  const filterSelect = document.querySelector(".filter-select");
+  const searchButton = document.querySelector(".search-btn");
 
-let events = [];         // All events fetched from API
-let filteredEvents = []; // Events after search
-let currentPage = 1;
-const eventsPerPage = 6; // Number of events per page
+  const API_URL = "https://1a0239da-31dc-4528-97a5-d2884789c26c-00-cnuht8pxrfq2.pike.replit.dev/event.php";
 
-// Fetch Events
-async function fetchEvents() {
-  try {
-    message.textContent = "Loading events...";
 
-    const response = await fetch('https://mocki.io/v1/5a7299a2-0b4c-4e46-9385-5d58cc1e0aa2');
-    if (!response.ok) {
-      throw new Error('Failed to fetch events.');
+  async function loadEvents() {
+    try {
+      const res = await fetch(API_URL);
+      const events = await res.json();
+
+      eventList.innerHTML = "";
+      events.forEach(event => {
+        const eventCard = createEventCard(event);
+        eventList.appendChild(eventCard);
+      });
+    } catch (err) {
+      console.error("Error loading events:", err);
     }
-
-    const data = await response.json();
-    events = data;
-    filteredEvents = events;
-
-    message.textContent = "";
-    renderEvents();
-    renderPagination();
-  } catch (error) {
-    console.error(error);
-    message.textContent = "Error loading events. Please try again later.";
-  }
-}
-
-// Render Events on Page
-function renderEvents() {
-  eventsContainer.innerHTML = "";
-
-  const start = (currentPage - 1) * eventsPerPage;
-  const end = start + eventsPerPage;
-  const paginatedEvents = filteredEvents.slice(start, end);
-
-  if (paginatedEvents.length === 0) {
-    eventsContainer.innerHTML = `<p class="text-center col-span-3">No events found.</p>`;
-    return;
   }
 
-  paginatedEvents.forEach(event => {
-    const eventCard = document.createElement('div');
-    eventCard.className = 'bg-white p-4 rounded shadow hover:shadow-md transition';
-    eventCard.innerHTML = `
-      <h2 class="text-xl font-bold text-blue-700">${event.title}</h2>
-      <p class="text-gray-600">${event.date}</p>
-      <p class="mt-2 text-gray-700">${event.description.substring(0, 100)}...</p>
-      <button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded" onclick="viewEventDetails('${event.id}')">
-        View Details
-      </button>
+  function createEventCard(event) {
+    const card = document.createElement("div");
+    card.className = "event-item bg-white p-4 border rounded-md shadow-sm";
+    card.innerHTML = `
+      <h2 class="text-xl font-semibold text-blue-600">${event.title}</h2>
+      <p>Event Date: ${event.event_date}</p>
+      <p class="text-gray-600">${event.description_text}</p>
     `;
-    eventsContainer.appendChild(eventCard);
+    return card;
+  }
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const newEvent = {
+      title: titleInput.value,
+      event_date: dateInput.value,
+      description_text: descInput.value
+    };
+
+    try {
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newEvent)
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        const newCard = createEventCard(newEvent);
+        eventList.prepend(newCard);
+        form.reset();
+      } else {
+        alert("Failed to add event: " + (result.error || "Unknown error"));
+      }
+    } catch (err) {
+      alert("An error occurred: " + err.message);
+      console.error(err);
+    }
   });
-}
 
-// Render Pagination Buttons
-function renderPagination() {
-  pagination.innerHTML = "";
-  const totalPages = Math.ceil(filteredEvents.length / eventsPerPage);
+  function filterEvents() {
+    const searchText = searchInput.value.toLowerCase();
+    const filterValue = filterSelect.value;
+    const events = document.querySelectorAll(".event-item");
 
-  for (let i = 1; i <= totalPages; i++) {
-    const btn = document.createElement('button');
-    btn.className = `px-3 py-1 border rounded ${i === currentPage ? 'bg-blue-600 text-white' : ''}`;
-    btn.textContent = i;
-    btn.addEventListener('click', () => {
-      currentPage = i;
-      renderEvents();
-      renderPagination();
+    events.forEach(event => {
+      const title = event.querySelector("h2").textContent.toLowerCase();
+      const description = event.querySelector("p:nth-of-type(2)").textContent.toLowerCase();
+      const date = event.querySelector("p:nth-of-type(1)").textContent;
+      const eventDate = new Date(date.split(": ")[1]);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const matchesSearch = title.includes(searchText) || description.includes(searchText);
+      let matchesFilter = true;
+
+      if (filterValue === "upcoming") {
+        matchesFilter = eventDate >= today;
+      } else if (filterValue === "past") {
+        matchesFilter = eventDate < today;
+      }
+
+      event.style.display = matchesSearch && matchesFilter ? "block" : "none";
     });
-    pagination.appendChild(btn);
   }
-}
 
-// Search Events
-searchInput.addEventListener('input', () => {
-  const searchTerm = searchInput.value.toLowerCase();
-  filteredEvents = events.filter(event => event.title.toLowerCase().includes(searchTerm));
-  currentPage = 1;
-  renderEvents();
-  renderPagination();
+  searchButton.addEventListener("click", filterEvents);
+  filterSelect.addEventListener("change", filterEvents);
+  searchInput.addEventListener("keyup", e => {
+    if (e.key === "Enter") filterEvents();
+  });
+
+  const paginationButtons = document.querySelectorAll(".pagination button");
+  paginationButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      alert(`You clicked: ${button.textContent}`);
+    });
+  });
+
+  loadEvents();
 });
-
-// View Event Details (Simple Alert)
-function viewEventDetails(id) {
-  const selectedEvent = events.find(event => event.id == id);
-  if (selectedEvent) {
-    alert(`Event: ${selectedEvent.title}\nDate: ${selectedEvent.date}\n\n${selectedEvent.description}`);
-  }
-}
-
-// Initialize the page
-fetchEvents();
