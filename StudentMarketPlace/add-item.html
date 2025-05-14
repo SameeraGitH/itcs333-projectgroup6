@@ -17,7 +17,6 @@
   <!-- Main -->
   <main class="container mx-auto p-6">
     <form id="addItemForm"
-      action="https://309558c3-c43f-4752-81ff-6ed53ad85e99-00-2x7lu5mdimdw2.sisko.replit.dev/createAddItem.php"
       method="POST"
       enctype="multipart/form-data"
       class="bg-white p-6 rounded shadow-md space-y-4">
@@ -73,7 +72,7 @@
     const errorMessage = document.getElementById('error-message');
 
     form.addEventListener('submit', function(event) {
-      // event.preventDefault(); ← this line was removed
+      event.preventDefault(); // Prevent the form from submitting the traditional way
 
       // Gather form values
       const title = document.getElementById('title').value.trim();
@@ -81,37 +80,67 @@
       const price = document.getElementById('price').value.trim();
       const description = document.getElementById('description').value.trim();
       const contact = document.getElementById('contact').value.trim();
+      const image = document.getElementById('image').files[0]; // Get the image file
 
       // Simple form validation
       if (title.length < 3) {
         showError('Title must be at least 3 characters long.');
         form.scrollIntoView({ behavior: 'smooth' });
-        event.preventDefault(); return;
+        return;
       }
       if (category === "") {
         showError('Please select a category.');
         form.scrollIntoView({ behavior: 'smooth' });
-        event.preventDefault(); return;
+        return;
       }
       if (price === "" || isNaN(price) || Number(price) <= 0) {
         showError('Please enter a valid price.');
         form.scrollIntoView({ behavior: 'smooth' });
-        event.preventDefault(); return;
+        return;
       }
       if (description.length < 10) {
         showError('Description must be at least 10 characters.');
         form.scrollIntoView({ behavior: 'smooth' });
-        event.preventDefault(); return;
+        return;
       }
       if (!validateEmail(contact)) {
         showError('Please enter a valid email address.');
         form.scrollIntoView({ behavior: 'smooth' });
-        event.preventDefault(); return;
+        return;
       }
 
+      // Clear any previous error messages
       errorMessage.classList.add('hidden');
-      // Let the form submit to PHP>
+
+      // Prepare FormData to send to backend
+      const formData = new FormData();
+      formData.append('title', title);
+      formData.append('category', category);
+      formData.append('price', price);
+      formData.append('description', description);
+      formData.append('contact', contact);
+      if (image) formData.append('image', image);
+
+      // Send the data via Fetch API
+      fetch('https://309558c3-c43f-4752-81ff-6ed53ad85e99-00-2x7lu5mdimdw2.sisko.replit.dev/createAddItem.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert("Item added successfully!");
+          window.location.href = 'marketplace.html'; // Redirect after successful submission
+        } else {
+          showError(data.message || "Failed to add item.");
+        }
+      })
+      .catch(error => {
+        showError("An error occurred while submitting the form.");
+        console.error(error);
+      });
     });
+
 
     function showError(message) {
       errorMessage.textContent = message;
