@@ -66,5 +66,30 @@ function deleteNote() {
 }
 
 
+// Routing logic to handle different API requests
+$request_method = $_SERVER['REQUEST_METHOD'];
+$path = $_SERVER['PATH_INFO'];
+
+switch ($request_method) {
+    case 'POST':
+        if ($path == '/create') {
+            createNote();
+        } elseif ($path == '/update') {
+            updateNote();
+        } elseif ($path == '/delete') {
+            deleteNote();
+        }
+        break;
+    case 'GET':
+        if ($path == '/notes') {
+            getNotes();
+        }
+        break;
+    default:
+        echo json_encode(['message' => 'Invalid request method']);
+        break;
+}
+
+
 ?>
 
