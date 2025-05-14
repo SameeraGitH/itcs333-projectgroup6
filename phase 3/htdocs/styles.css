@@ -1,0 +1,235 @@
+body{
+    background-color: lightblue;
+}
+
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100%;
+    padding: 20px;
+}
+.search-bar{
+    width: fit-content;
+    max-width: 700px;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    padding: 5px 10px;
+    font-size: 14px;
+    margin: 20px
+}
+.search-bar input{
+    border:none;
+    background: transparent;
+    outline: none;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.search-bar button{
+    background: none;
+    border:none;
+    cursor:pointer;
+    padding: 5px;
+}
+.search-bar img{
+    width: 20px;
+    height: 20px;
+}
+
+.text-box{
+    width: 90%;
+    color: black;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.activity-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+.activity-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }   
+.form-button{ /*styling the button that goes to the form*/
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 95px;
+}
+
+
+
+/* Styling for the form starts here*/
+.form-page{
+    font-family: Arial, sans-serif;
+    background-color: lightblue;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    margin: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"],
+input[type="submit"],
+input[type="reset"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+    outline-color: #007bff;
+}
+
+
+button, input[type="submit"], input[type="reset"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+button:hover, input[type="submit"]:hover, input[type="reset"]:hover {
+    background-color: #0056b3;
+}
+
+button {
+    background-color: #6c757d;
+    width: auto;
+    margin-left: 10px;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #5a6268;
+}
+
+
+
+.view-button{ /* the button to view the deatils of the activities in the list*/
+    display: inline-block;
+    float: right;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+    
+}
+.view-button:hover{
+    background-color: #0056b3;
+}
+.activity-details {
+    background-color: white;
+    padding: 25px;
+    margin: 40px auto;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+.activity-details h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.view-desc-butn{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+.edit-button {
+  background-color: #f59e0b; /* Amber */
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.edit-button:hover {
+  background-color: #d97706;
+}
+
+.delete-button {
+  background-color: #ef4444; /* Red */
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.delete-button:hover {
+  background-color: #dc2626;
+}
+
+.comment-card {
+    border-left: 3px solid #3b82f6;
+    padding-left: 1rem;
+}
+
+.comment-meta {
+    color: #6b7280;
+    font-size: 0.875rem;
+}

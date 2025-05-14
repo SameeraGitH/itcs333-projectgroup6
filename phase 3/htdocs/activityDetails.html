@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details of the activity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 font-sans text-gray-800 p-4" >
+    <div id="activityDetails" class="p-8 bg-white rounded shadow-md"></div>
+
+    
+
+
+    <div class="flex justify-center mt-10">
+     <a href="index.php" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-3 rounded-full transition duration-200">Back to Activities</a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const id = window.location.hash.substring(1);
+            const container = document.getElementById('activityDetails');
+
+            if (!id) {
+                showError("No activity selected");
+                return;
+            }
+
+            try {
+                // 1. Try loading from API first
+                const response = await fetch(`api.php?action=getActivity&id=${id}`);
+                const data = await response.json();
+
+                if (data.error) {
+                    // 2. Fallback to localStorage if API fails
+                    await loadFromLocalStorage();
+                } else {
+                    renderActivity(data);
+                }
+            } catch (error) {
+                console.error("API failed, trying fallback:", error);
+                await loadFromLocalStorage();
+            }
+
+            async function loadFromLocalStorage() {
+                try {
+                    const savedActivities = JSON.parse(localStorage.getItem('activities')) || [];
+                    const activity = savedActivities.find(a => String(a.id) === id);
+
+                    if (activity) {
+                        renderActivity(activity);
+                    } else {
+                        showError("Activity not found in local storage");
+                    }
+                } catch (error) {
+                    console.error("Local storage failed:", error);
+                    showError("Failed to load activity details");
+                }
+            }
+
+            function renderActivity(activity) {
+                container.innerHTML = `
+                    <div class="bg-white p-8 rounded-lg shadow-lg max-w-3xl mx-auto">
+                        <h2 class="text-2xl font-bold mb-4">${activity.title || 'Untitled Activity'}</h2>
+                        <p class="mb-2"><strong>Club:</strong> ${activity.club || 'Not specified'}</p>
+                        <p class="mb-2"><strong>Date & Time:</strong> ${activity.dateTime || activity.date_time || 'Not scheduled'}</p>
+                        <p class="mb-2"><strong>Location:</strong> ${activity.location || 'Not specified'}</p>
+                        <div class="mt-4 pt-4 border-t">
+                            <p><strong>Description:</strong></p>
+                            <p class="mt-2">${activity.description || 'No description available.'}</p>
+                        </div>
+                       
+                    </div>
+                `;
+            }
+
+            function showError(message) {
+                container.innerHTML = `
+                    <div class="text-center py-8">
+                        <p class="text-red-500 text-lg">${message}</p>
+                        <a href="index.html" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded">
+                            Back to Activities
+                        </a>
+                    </div>
+                `;
+            }
+        });
+    </script>
+        
+        
+</body>
+</html>
