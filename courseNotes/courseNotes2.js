@@ -14,10 +14,11 @@ let notes = [];
 let currentPage = 1;
 const notesPerPage = 2;
 
+
 async function fetchNotes() {
     loadingIndicator.style.display = 'block';
     try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts'); 
+        const response = await fetch('https://fb3c16b7-48b2-4316-b3e8-08d9a93fc9e4-00-1mn5sfgwtrduu.sisko.replit.dev/api.php');
         if (!response.ok) throw new Error('Network response was not ok');
         
         notes = await response.json();
@@ -28,6 +29,7 @@ async function fetchNotes() {
         loadingIndicator.style.display = 'none';
     }
 }
+
 
 function renderNotes() {
     notesList.innerHTML = ''; // Clear current notes
@@ -76,6 +78,62 @@ nextButton.addEventListener('click', () => {
         renderNotes();
     }
 });
+
+async function createNote() {
+    const title = document.getElementById('title').value;
+    const content = document.getElementById('content').value;
+
+    const response = await fetch('https://your-replit-url/create', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `title=${encodeURIComponent(title)}&content=${encodeURIComponent(content)}`
+    });
+
+    if (response.ok) {
+        fetchNotes();
+    } else {
+        console.error('Error creating note:', response.statusText);
+    }
+}
+
+async function updateNote() {
+    const id = document.getElementById('note-id').value;
+    const title = document.getElementById('title').value;
+    const content = document.getElementById('content').value;
+
+    const response = await fetch('https://your-replit-url/update', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `id=${encodeURIComponent(id)}&title=${encodeURIComponent(title)}&content=${encodeURIComponent(content)}`
+    });
+
+    if (response.ok) {
+        fetchNotes();
+    } else {
+        console.error('Error updating note:', response.statusText);
+    }
+}
+
+async function deleteNote(noteId) {
+    const response = await fetch('https://your-replit-url/delete', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `id=${encodeURIComponent(noteId)}`
+    });
+
+    if (response.ok) {
+        fetchNotes();
+    } else {
+        console.error('Error deleting note:', response.statusText);
+    }
+}
+
 
 function viewDetail(noteId) {
     const note = notes.find(n => n.id === noteId);
